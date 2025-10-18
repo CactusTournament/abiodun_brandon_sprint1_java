@@ -31,6 +31,7 @@ public class Person {
         return phoneNumber;
     }
 
+    // Setters
     public void setName(String name) {
         this.name = name;
     }
