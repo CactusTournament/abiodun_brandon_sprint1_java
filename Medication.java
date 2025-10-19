@@ -41,6 +41,6 @@ public class Medication {
 
     @Override
     public String toString() {
-        return "Medcaition ID = " + id + ", Name = " + name + ", Dose = " + dose + ", Quantity In Stock = " + quantityInStock + ", Expiry Date = " + expiryDate;
+        return "Medication ID = " + id + ", Name = " + name + ", Dose = " + dose + ", Quantity In Stock = " + quantityInStock + ", Expiry Date = " + expiryDate;
     }
 }
