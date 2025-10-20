@@ -25,13 +25,50 @@ public class MedicationSystem {
         prescriptions = new ArrayList<>();
     }
 
-    // Add a medication to the system
+
+    // Add a medication object directly
     public void addMedication(Medication medication) {
-        if (medication != null) {
-            medications.add(medication);
-            System.out.println("Added medication: " + medication.getName());
+        if (medication == null) {
+            System.out.println("Cannot add null medication.");
+            return;
         }
+
+        // Check for duplicates by ID
+        for (Medication existing : medications) {
+            if (existing.getID().equalsIgnoreCase(medication.getID())) {
+                System.out.println("Medication with ID " + medication.getID() + " already exists.");
+                return;
+            }
+        }
+
+        medications.add(medication);
+        System.out.println("Added medication: " + medication.getName());
     }
+
+    // Overload: Add by details (used for Scanner input later)
+    public void addMedication(String id, String name, String dosage, int quantity, LocalDate expiryDate) {
+        if (id == null || name == null || dosage == null || expiryDate == null) {
+            System.out.println("Invalid medication details provided.");
+            return;
+        }
+
+        Medication newMed = new Medication(id, name, dosage, quantity, expiryDate);
+        addMedication(newMed); // Delegate to main method
+    }
+
+    // Optional: Add by ID or name (could later load a predefined template)
+    public void addMedication(String identifier) {
+        if (identifier == null || identifier.isEmpty()) {
+            System.out.println("Invalid identifier.");
+            return;
+        }
+
+        // Future placeholder (maybe load from database or predefined catalog)
+        System.out.println("Feature not implemented yet: add medication by identifier only (" + identifier + ")");
+    }
+
+
+
 
     // Display all medications
     public void viewMedications() {
@@ -45,23 +82,90 @@ public class MedicationSystem {
         }
     }
 
-    // Test 
-    public static void main(String[] args) {
-        MedicationSystem system = new MedicationSystem();
 
-        system.addMedication(new Medication("M001", "Amoxicillin", "500mg", 30, LocalDate.of(2024, 12, 31)));
-        system.addMedication(new Medication("M002", "Ibuprofen", "200mg", 50, LocalDate.of(2025, 6, 15)));
 
-        system.viewMedications();
+
+    // Remove by identifier (ID or name)
+    public void removeMedication(String identifier) {
+        if (identifier == null || identifier.isEmpty()) {
+            System.out.println("Invalid medication identifier.");
+            return;
+        }
+
+        for (int i = 0; i < medications.size(); i++) {
+            Medication med = medications.get(i);
+            if (med.getID().equalsIgnoreCase(identifier) || med.getName().equalsIgnoreCase(identifier)) {
+                medications.remove(i);
+                System.out.println("Removed medication: " + med.getName() + " (ID: " + med.getID() + ")");
+                return;
+            }
+        }
+
+        System.out.println("No medication found with ID or name: " + identifier);
     }
 
-// TODO: Implement method to remove a medication by ID or name
+    // Overload: remove by Medication object
+    public void removeMedication(Medication medication) {
+        if (medication == null) {
+            System.out.println("Invalid medication reference.");
+            return;
+        }
+        removeMedication(medication.getID());
+    }
 
-// TODO: Implement method to edit medication details (dose, quantity, etc.)
+    
 
-// TODO: Add search functionality (find by ID or name)
 
-// TODO: Add method to check and list expired medications
+    // Edit by identifier or name
+    public void editMedication(String identifier, String newDosage, Integer newQuantity, LocalDate newExpiryDate) {
+        if (identifier == null || identifier.isEmpty()) {
+            System.out.println("Invalid medication identifier.");
+            return;
+        }
+
+        boolean updatedAny = false;
+
+        for (Medication med : medications) {
+            if (med.getID().equalsIgnoreCase(identifier) || med.getName().equalsIgnoreCase(identifier)) {
+                if (newDosage != null && !newDosage.isEmpty()) {
+                    med.setDose(newDosage);
+                    updatedAny = true;
+                }
+                if (newQuantity != null && newQuantity >= 0) {
+                    med.setQuantityInStock(newQuantity);
+                    updatedAny = true;
+                }
+                if (newExpiryDate != null) {
+                    med.setExpiryDate(newExpiryDate);
+                    updatedAny = true;
+                }
+                if (updatedAny) {
+                    System.out.println("Updated medication: " + med.getName() + " (ID: " + med.getID() + ")");
+                }
+                return; // only update first match
+            }
+        }
+
+        System.out.println("No medication found with ID or name: " + identifier);
+    }
+
+    // Overload: edit by Medication object
+    public void editMedication(Medication medication, String newDosage, Integer newQuantity, LocalDate newExpiryDate) {
+        if (medication == null) {
+            System.out.println("Invalid medication reference.");
+            return;
+        }
+        editMedication(medication.getID(), newDosage, newQuantity, newExpiryDate);
+    }
+
+
+
+
+
+
+// TODO: Add search functionality (find by ID or name) 
+
+// TODO: Add method to check and list expired medications 
 
 // TODO: Add restock functionality (random or specific number)
 
