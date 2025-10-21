@@ -33,7 +33,12 @@ public class Doctor extends Person {
 
     // Manage patients
     public void addPatient(Patient patient) {
-        patients.add(patient);
+        if (!patients.contains(patient)) {
+            patients.add(patient);
+            System.out.println("Patient " + patient.getName() + " added to Doctor " + getName() + "'s list.");
+        } else {
+            System.out.println("Patient already assigned to Doctor " + getName() + ".");    
+        }
     }
 
     public void removePatient(Patient patient) {

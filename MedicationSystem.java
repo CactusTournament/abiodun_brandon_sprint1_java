@@ -68,9 +68,6 @@ public class MedicationSystem {
         System.out.println("Feature not implemented yet: add medication by identifier only (" + identifier + ")");
     }
 
-
-
-
     // Display all medications
     public void viewMedications() {
         System.out.println("\n--- Medication List ---");
@@ -82,8 +79,6 @@ public class MedicationSystem {
             }
         }
     }
-
-
 
 
     // Remove by identifier (ID or name)
@@ -113,9 +108,6 @@ public class MedicationSystem {
         }
         removeMedication(medication.getID());
     }
-
-    
-
 
     // Edit by identifier or name
     public void editMedication(String identifier, String newDosage, Integer newQuantity, LocalDate newExpiryDate) {
@@ -159,19 +151,81 @@ public class MedicationSystem {
         editMedication(medication.getID(), newDosage, newQuantity, newExpiryDate);
     }
 
-    // Search functionality (find by ID or name)
-    public Medication searchMedication(String keyword) {
+    // Search across Medications, Patients, and Doctors by name
+    public void searchAll(String keyword) {
+        boolean found = false;
+
+        // Search Medications by Name
         for (Medication med: medications) {
-            if (med.getID().equalsIgnoreCase(keyword) || med.getName().equalsIgnoreCase(keyword)) {
+            if (med.getName().equalsIgnoreCase(keyword)) {
                 System.out.println(med);
-                return med;
+                found = true;
             }
         }
-        System.out.println("No medication found for: " + keyword);
-        return null;
+
+        // Search Patients by Name
+        for (Patient pat: patients) {
+            if (pat.getName().equalsIgnoreCase(keyword)) {
+                System.out.println(pat);
+                found = true;
+            }
+        }
+
+        // Search Doctors by Name
+        for (Doctor doc: doctors) {
+            if (doc.getName().equalsIgnoreCase(keyword)) {
+                System.out.println(doc);
+                found = true;
+            }
+        }
+
+        // Not found message
+        if (!found) {
+            System.out.println("No records found for: " + keyword);
+        }
     }
 
+    // Add patient
+    public void addPatient(Patient patient) {
+        if (patient != null) {
+            patients.add(patient);
+            System.out.println("Patient added: " + patient.getName());
+        }
+    }
+    
+    // Add doctor
+    public void addDoctor(Doctor doctor) {
+        if (doctor != null) {
+            doctors.add(doctor);
+            System.out.println("Doctor added: " + doctor.getName());
+        }
+    }
 
+    // Add patient to doctor's list by names
+    public void addPatientToDoctor(String doctorName, String patientName) {
+        Doctor doctor = null;
+        Patient patient = null;
+
+        for (Doctor doc : doctors) {
+            if (doc.getName().equalsIgnoreCase(doctorName)) {
+                doctor = doc;
+                break;
+            }
+        }
+
+        for (Patient pat : patients) {
+            if (pat.getName().equalsIgnoreCase(patientName)) {
+                patient = pat;
+                break;
+            }
+        }
+
+        if (doctor != null && patient != null) {
+            doctor.addPatient(patient);
+        } else {
+            System.out.println("Could not assign patient. Check doctor and patient names.");
+        }
+    }
 
 // TODO: Add method to check and list expired medications 
 
