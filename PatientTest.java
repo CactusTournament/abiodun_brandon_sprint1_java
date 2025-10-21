@@ -1,3 +1,9 @@
+/*
+ * Handles Patient class testing.
+ * 
+ * Author: Abiodun Magret Oyedele
+ * Date: 2024-10-21
+ */
 public class PatientTest {
     public static void main(String[] args) {
         // Create a patient

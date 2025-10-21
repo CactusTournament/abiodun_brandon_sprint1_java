@@ -1,3 +1,10 @@
+/*
+ * Handles Person class testing.
+ * 
+ * Author: Abiodun Magret Oyedele
+ * Date: 2024-10-21
+ */
+
 public class PersonTest {
     public static void main(String[] args) {
         // Create a person

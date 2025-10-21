@@ -91,6 +91,10 @@ public class MedicationSystemTest {
         system.searchAll("Dr. Smith");
         system.searchAll("Dr. Who"); // Should not find
 
+        System.out.println("\n\n");
+        System.out.println("_______Accepting prescription:______");
+        system.acceptPrescription(patient1.getName(), doctor1.getName(), med1.getID(), "Take once a day", 2);
+        system.acceptPrescription("Non Existent Patient", doctor1.getName(), med1.getID(), "Take once a day", 2); // Should fail
 
         // Display all medications
         system.viewMedications();

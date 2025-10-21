@@ -227,6 +227,51 @@ public class MedicationSystem {
         }
     }
 
+    // Accepts a prescription
+    public void acceptPrescription(String patientName, String doctorName, String medicationID, String dosage, int quantity) {
+        // Finds patient
+        Patient patient = null;
+        for (Patient p : patients) {
+            if (p.getName().equalsIgnoreCase(patientName)) {
+                patient = p;
+                break;
+            }
+        }
+
+        // Finds doctor
+        Doctor doctor = null;
+        for (Doctor d : doctors) {
+            if (d.getName().equalsIgnoreCase(doctorName)) {
+                doctor = d;
+                break;
+            }
+        }
+
+        // Finds medication
+        Medication medication = null;
+        for (Medication m : medications) {
+            if (m.getID().equalsIgnoreCase(medicationID)) {
+                medication = m;
+                break;
+            }
+        }
+
+        if (patient == null || doctor == null || medication == null) {
+            System.out.println("Cannot create prescription. Check patient, doctor, or medication.");
+            return;
+        }
+
+        // Create prescription
+        String prescriptionID = "RX" + (prescriptions.size() + 1);
+        Prescription prescription = new Prescription(prescriptionID, medication, patient, doctor);
+        prescriptions.add(prescription);
+
+        System.out.println("Prescription accepted for patient " +
+            patient.getName() + " by Dr. " + doctor.getName() +
+            " for medication " + medication.getName() +
+            " (Dosage: " + dosage + ", Quantity: " + quantity + ").");
+    }
+
 // TODO: Add method to check and list expired medications 
 
 // TODO: Add restock functionality (random or specific number)

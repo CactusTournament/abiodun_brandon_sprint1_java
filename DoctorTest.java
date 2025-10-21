@@ -1,3 +1,10 @@
+/*
+ * Handles Doctor class testing.
+ * 
+ * Author: Abiodun Magret Oyedele
+ * Date: 2024-10-21
+ */
+
 public class DoctorTest {
     public static void main(String[] args) {
         // Create a doctor
