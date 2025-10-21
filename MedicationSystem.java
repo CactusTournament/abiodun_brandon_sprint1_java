@@ -279,4 +279,14 @@ public class MedicationSystem {
 
 // TODO: Generate medication report for all stored medications
 
+// TODO: Edit and delete patients and doctors
+
+// TODO: Generate a report containing all system data, including drugs, patients, doctors, and prescriptions.
+
+// TODO: Check for expired medications and display a message if any are found.
+
+// TODO: Print a list of all prescription’s issued by a specific doctor.
+
+// TODO: Restock the drugs in the pharmacy in some capacity. You can just add a random number to the stock, you can add a specific number.
+
 }
