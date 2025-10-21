@@ -1,43 +1,21 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * Model class representing a patient in the pharmacy system.
+ * Stores patient properties (ID, name, age, phoneNumber).
+ * This class extends the Person class.
+ * 
+ * Author: Abiodun Magret Oyedele
+ * Date: 2024-10-18
+ */
 public class Patient extends Person {
     private final int patientID;
-    // private List<Medication> medications;
-    // private List<Prescription> prescriptions;
 
     public Patient(int ID, String name, int age, String phoneNumber) {
         super(ID, name, age, phoneNumber);
         this.patientID = ID;
-        // this.medications = new ArrayList<>();
-        // this.prescriptions = new ArrayList<>();
     }
-
-    // // Methods to manage medications and prescriptions
-    // public void addMedication(Medication medication) {
-    //     this.medications.add(medication);
-    // }
-
-    // public void removeMedication(Medication medication) {
-    //     this.medications.remove(medication);
-    // }
-
-    // public void addPrescription(Prescription prescription) {
-    //     this.prescriptions.add(prescription);
-    // }
-
-    // public void removePrescription(Prescription prescription) {
-    //     this.prescriptions.remove(prescription);
-    // }
-
-    // // Getters
-    // public List<Medication> getMedications() {
-    //     return this.medications;
-    // }
-
-    // public List<Prescription> getPrescriptions() {
-    //     return this.prescriptions;
-    // }
 
     public int getPatientID() {
         return patientID;
@@ -50,8 +28,6 @@ public class Patient extends Person {
                 ", name='" + getName() + '\'' +
                 ", age=" + getAge() +
                 ", phoneNumber='" + getPhoneNumber() + '\'' +
-                // ", medications=" + medications +
-                // ", prescriptions=" + prescriptions +
                 '}';
     }
 }
