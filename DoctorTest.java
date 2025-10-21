@@ -4,6 +4,7 @@ public class DoctorTest {
         Doctor doctor = new Doctor(1, "Dr. Smith", 45, "555-8765", "General Practitioner");
 
         // Access doctor properties
+        System.out.println("\n");
         System.out.println("_____Doctor Properties:______");
         System.out.println(doctor.getID());
         System.out.println(doctor.getName());
@@ -32,5 +33,6 @@ public class DoctorTest {
         for (Patient patient : doctor.getPatients()) {
             System.out.println(patient);
         }
+        System.out.println("\n");
     }
 }
