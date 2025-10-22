@@ -1,6 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * Model class representing a doctor in the pharmacy system.
+ * Stores doctor properties (ID, name, age, phoneNumber, specialization).
+ * This class extends the Person class.
+ * 
+ * Author: Abiodun Magret Oyedele
+ * Date: 2024-10-18
+ */
 public class Doctor extends Person {
     // Attributes
     private String specialization;
@@ -25,7 +33,12 @@ public class Doctor extends Person {
 
     // Manage patients
     public void addPatient(Patient patient) {
-        patients.add(patient);
+        if (!patients.contains(patient)) {
+            patients.add(patient);
+            System.out.println("Patient " + patient.getName() + " added to Doctor " + getName() + "'s list.");
+        } else {
+            System.out.println("Patient already assigned to Doctor " + getName() + ".");    
+        }
     }
 
     public void removePatient(Patient patient) {

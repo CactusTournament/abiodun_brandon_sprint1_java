@@ -1,4 +1,10 @@
-// Person super class
+/*
+ * This class represents a Person with attributes such as ID, name, age, and phone number.
+ * It provides constructors, getters, setters, and a toString method for easy representation.
+ * 
+ * Author: Abiodun Magret Oyedele
+ * Date: 2024-10-18
+ */
 public class Person {
     // Attributes
     private final int ID;

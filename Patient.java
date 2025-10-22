@@ -1,46 +1,54 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * Model class representing a patient in the pharmacy system.
+ * Stores patient properties (ID, name, age, phoneNumber) 
+ * and their list of prescriptions.
+ * This class extends the Person class.
+ * 
+ * Author: Abiodun Magret Oyedele
+ * Updated by: Brandon Maloney
+ * Date: 2025-10-21
+ */
 public class Patient extends Person {
     private final int patientID;
-    // private List<Medication> medications;
-    // private List<Prescription> prescriptions;
+    private List<Prescription> prescriptions; // Added to track prescriptions
 
     public Patient(int ID, String name, int age, String phoneNumber) {
         super(ID, name, age, phoneNumber);
         this.patientID = ID;
-        // this.medications = new ArrayList<>();
-        // this.prescriptions = new ArrayList<>();
+        this.prescriptions = new ArrayList<>();
     }
-
-    // // Methods to manage medications and prescriptions
-    // public void addMedication(Medication medication) {
-    //     this.medications.add(medication);
-    // }
-
-    // public void removeMedication(Medication medication) {
-    //     this.medications.remove(medication);
-    // }
-
-    // public void addPrescription(Prescription prescription) {
-    //     this.prescriptions.add(prescription);
-    // }
-
-    // public void removePrescription(Prescription prescription) {
-    //     this.prescriptions.remove(prescription);
-    // }
-
-    // // Getters
-    // public List<Medication> getMedications() {
-    //     return this.medications;
-    // }
-
-    // public List<Prescription> getPrescriptions() {
-    //     return this.prescriptions;
-    // }
 
     public int getPatientID() {
         return patientID;
+    }
+
+    // --- Prescription Management ---
+
+    /** Adds a prescription to the patient’s record. */
+    public void addPrescription(Prescription prescription) {
+        if (prescription != null) {
+            prescriptions.add(prescription);
+        }
+    }
+
+    /** Returns a list of all prescriptions for this patient. */
+    public List<Prescription> getPrescriptions() {
+        return prescriptions;
+    }
+
+    /** Prints all prescriptions for this patient. */
+    public void printPrescriptions() {
+        System.out.println("\nPrescriptions for " + getName() + ":");
+        if (prescriptions.isEmpty()) {
+            System.out.println("No prescriptions found.");
+        } else {
+            for (Prescription p : prescriptions) {
+                System.out.println(p);
+            }
+        }
     }
 
     @Override
@@ -50,8 +58,7 @@ public class Patient extends Person {
                 ", name='" + getName() + '\'' +
                 ", age=" + getAge() +
                 ", phoneNumber='" + getPhoneNumber() + '\'' +
-                // ", medications=" + medications +
-                // ", prescriptions=" + prescriptions +
+                ", totalPrescriptions=" + prescriptions.size() +
                 '}';
     }
 }
