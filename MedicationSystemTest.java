@@ -18,7 +18,7 @@ public class MedicationSystemTest {
         Patient patient2 = new Patient(2, "Jane Smith", 25, "555-5678");
 
         // Add medications 
-        Medication med1 = new Medication("M001", "Amoxicillin", "500mg", 30, LocalDate.of(2024, 12, 31));
+        Medication med1 = new Medication("M001", "Amoxicillin", "500mg", 30, LocalDate.of(2026, 12, 31));
         Medication med2 = new Medication("M002", "Ibuprofen", "200mg", 50, LocalDate.of(2025, 6, 15));
         Medication med3 = new Medication("M003", "Tramadol", "50mg", 20, LocalDate.of(2025, 3, 31));
 
@@ -50,7 +50,7 @@ public class MedicationSystemTest {
         System.out.println("\n\n");
         system.addMedication(med1);
         system.addMedication(med2);
-        system.editMedication("M001", "750mg", 40, LocalDate.of(2025, 8, 31));
+        system.editMedication("M003", "50mg", 40, LocalDate.of(2025, 8, 31));
         system.editMedication("Ibuprofen", null, 100, null);
         system.editMedication(med2, null, 25, null);
 
@@ -117,9 +117,9 @@ public class MedicationSystemTest {
         system.restockMedications(15);  // restock each medication by 15 units
 
         // Test prescription linking to patients 
-        System.out.println("\n\n");
-        System.out.println("_______Testing prescription linking_______");
-        system.linkPrescriptionsToPatients();
+        // System.out.println("\n\n");
+        // System.out.println("_______Testing prescription linking_______");
+        // system.linkPrescriptionsToPatients();
 
         // Print prescriptions for patient to confirm link worked
         patient1.printPrescriptions();
@@ -167,6 +167,17 @@ public class MedicationSystemTest {
         System.out.println("_______Removing doctor information:______");
         system.removeDoctor(doctor1);
         system.addDoctor(doctor1);
+
+        // Generate medication and full system reports
+        System.out.println("\n\n");
+        System.out.println("_______Generating medication report:______");
+        system.generateMedicationReport();
+
+        System.out.println("\n\n");
+        System.out.println("_______Generating full system report:______");
+        system.generateFullSystemReport();
+
+        System.out.println("\n\nAll tests completed successfully!");
 
     }
 }

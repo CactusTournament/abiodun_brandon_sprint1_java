@@ -11,9 +11,10 @@ import java.util.List;
  * Updated by: Brandon Maloney
  * Date: 2025-10-21
  */
+
 public class Patient extends Person {
     private final int patientID;
-    private List<Prescription> prescriptions; // Added to track prescriptions
+    private final List<Prescription> prescriptions; // Added to track prescriptions
 
     public Patient(int ID, String name, int age, String phoneNumber) {
         super(ID, name, age, phoneNumber);
@@ -28,11 +29,12 @@ public class Patient extends Person {
     // --- Prescription Management ---
 
     /** Adds a prescription to the patient’s record. */
-    public void addPrescription(Prescription prescription) {
-        if (prescription != null) {
-            prescriptions.add(prescription);
+    public void addPrescription(Prescription pres) {
+        if (pres != null && !prescriptions.contains(pres)) {
+            prescriptions.add(pres);
         }
     }
+
 
     /** Returns a list of all prescriptions for this patient. */
     public List<Prescription> getPrescriptions() {
