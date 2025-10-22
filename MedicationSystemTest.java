@@ -101,5 +101,25 @@ public class MedicationSystemTest {
 
         // Display all medications
         system.viewMedications();
+
+        // Test expired medication check 
+        System.out.println("\n\n");
+        System.out.println("_______Testing expired medication check_______");
+        Medication expiredMed = new Medication("M005", "Lisinopril", "10mg", 30, LocalDate.of(2023, 5, 15));
+        system.addMedication(expiredMed);
+        system.checkExpiredMedications();
+
+        // Test restock functionality 
+        System.out.println("\n\n");
+        System.out.println("_______Testing restock functionality_______");
+        system.restockMedications(15);  // restock each medication by 15 units
+
+        // Test prescription linking to patients 
+        System.out.println("\n\n");
+        System.out.println("_______Testing prescription linking_______");
+        system.linkPrescriptionsToPatients();
+
+        // Print prescriptions for patient to confirm link worked
+        patient1.printPrescriptions();
     }
 }
