@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Represents the medication management system.
@@ -272,10 +273,55 @@ public class MedicationSystem {
     }
 
 // TODO: Add method to check and list expired medications 
+     public void checkExpiredMedications() {
+        System.out.println("\n--- Checking for Expired Medications ---");
+        boolean foundExpired = false;
+        LocalDate today = LocalDate.now();
+
+        for (Medication med : medications) {
+            if (med.getExpiryDate().isBefore(today)) {
+                System.out.println("Expired: " + med.getName() + " (ID: " + med.getID() +
+                        ", Expired on: " + med.getExpiryDate() + ")");
+                foundExpired = true;
+            }
+        }
+
+        if (!foundExpired) {
+            System.out.println("No expired medications found.");
+        }
+    }
+
 
 // TODO: Add restock functionality (random or specific number)
+     public void restockMedications(int amount) {
+        System.out.println("\n--- Restocking Medications ---");
+        Random rand = new Random();
+
+        for (Medication med : medications) {
+            int restockAmount = (amount > 0) ? amount : rand.nextInt(20) + 5; // 5–25 random restock
+            int newQuantity = med.getQuantityInStock() + restockAmount;
+            med.setQuantityInStock(newQuantity);
+            System.out.println("Restocked " + med.getName() + " by " + restockAmount +
+                    " units. New total: " + newQuantity);
+        }
+    }
 
 // TODO: Connect MedicationSystem to Prescription and Patient classes
+
+      public void linkPrescriptionsToPatients() {
+        System.out.println("\n--- Linking Prescriptions to Patients ---");
+        int linkedCount = 0;
+
+        for (Prescription pres : prescriptions) {
+            Patient patient = pres.getPatient();
+            if (patient != null) {
+                patient.addPrescription(pres);
+                linkedCount++;
+            }
+        }
+
+        System.out.println("Linked " + linkedCount + " prescriptions to patients.");
+    }
 
 // TODO: Generate medication report for all stored medications
 
