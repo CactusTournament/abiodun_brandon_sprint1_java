@@ -142,6 +142,14 @@ public class MedicationSystemTest {
         system.editPatients(patient1.getName(), "Johnathan Doe", 31, "555-9999");
         system.editPatients(patient1.getName(), "James Nice", null, "222-2222");
         system.editPatients(patient1.getName(), "null", null, "111-1111");
-        system.editPatients(patient1.getName(), "John Doe", 31, "555-1234");
+        system.editPatients(patient1.getName(), "John Doesss", 31, "555-1234");
+        system.editPatients(patient1, "John Doe", 31, "555-1234");
+
+        // Remove patients
+        // Patient patient2 = new Patient(2, "Jane Smith", 25, "555-5678");
+        System.out.println("\n\n");
+        System.out.println("_______Removing patient information:______");
+        system.removePatient(patient2);
+        system.addPatient(patient2);
     }
 }

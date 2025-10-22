@@ -372,9 +372,46 @@ public class MedicationSystem {
         System.out.println("No patient found with name: " + oldName);
     }
 
+    // Overload: Edit patient by Patient object
+    public void editPatients(Patient patient, String name, Integer age, String phoneNumber) {
+        if (patient == null) {
+            System.out.println("Invalid patient reference.");
+            return;
+        }
+        editPatients(patient.getName(), name, age, phoneNumber);
+    }
+
+    // Delete patients (ID or name)
+    public void removePatient(String identifier) {
+        if (identifier == null || identifier.isEmpty()) {
+            System.out.println("Invalid patient identifier.");
+            return;
+        }
+
+        for (int i = 0; i < patients.size(); i++) {
+            Patient pat = patients.get(i);
+            if (String.valueOf(pat.getID()).equalsIgnoreCase(identifier) || pat.getName().equalsIgnoreCase(identifier)) {
+                patients.remove(i);
+                System.out.println("Removed patient: " + pat.getName() + " (ID: " + pat.getID() + ")");
+                return;
+            }
+        }
+
+        System.out.println("No patient found with ID or name: " + identifier);
+    }
+
+    // Overload: remove by Patient object
+    public void removePatient(Patient patient) {
+        if (patient == null) {
+            System.out.println("Invalid patient reference.");
+            return;
+        }
+        removePatient(String.valueOf(patient.getID()));
+    }
+
 // TODO: Generate medication report for all stored medications
 
-// TODO: Edit and delete  doctors and delete patients
+// TODO: Edit and delete doctors
 
 // TODO: Generate a report containing all system data, including drugs, patients, doctors, and prescriptions.
 
