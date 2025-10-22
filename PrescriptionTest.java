@@ -23,10 +23,11 @@ public class PrescriptionTest {
 
         // Create prescription
         Prescription prescription = new Prescription(
-                "PR001",
-                med,
-                patient,
-                doctor
+            patient,
+            doctor,
+            med,
+            "Take one tablet daily",
+            2
         );
 
         // Display details
