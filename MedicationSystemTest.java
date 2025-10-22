@@ -97,6 +97,8 @@ public class MedicationSystemTest {
         System.out.println("\n\n");
         System.out.println("_______Accepting prescription:______");
         system.acceptPrescription(patient1.getName(), doctor1.getName(), med1.getID(), "Take once a day", 2);
+        system.acceptPrescription(patient1.getName(), doctor1.getName(), med3.getID(), "Take once a day", 2);
+        system.acceptPrescription(patient2.getName(), doctor2.getName(), med3.getID(), "Take twice a day", 1);
         system.acceptPrescription("Non Existent Patient", doctor1.getName(), med1.getID(), "Take once a day", 2); // Should fail
 
         // Display all medications
@@ -121,5 +123,25 @@ public class MedicationSystemTest {
 
         // Print prescriptions for patient to confirm link worked
         patient1.printPrescriptions();
+
+        // Print a list of all prescription’s issued by a specific doctor.
+        System.out.println("\n\n");
+        System.out.println("_______Printing prescriptions issued by _______");
+        final String doctor1Name = doctor1.getName();
+        System.out.println("Prescriptions issued by " + doctor1Name + ":");
+        system.printPrescriptionsByDoctor(doctor1.getName());
+        final String doctor2Name = doctor2.getName();
+        System.out.println("\nPrescriptions issued by " + doctor2Name + ":");
+        system.printPrescriptionsByDoctor(doctor2.getName());
+        System.out.println('\n');
+        system.printPrescriptionsByDoctor("Dr. Who"); // Should fail
+
+        // Edit patients
+        System.out.println("\n\n");
+        System.out.println("_______Editing patient information:______");
+        system.editPatients(patient1.getName(), "Johnathan Doe", 31, "555-9999");
+        system.editPatients(patient1.getName(), "James Nice", null, "222-2222");
+        system.editPatients(patient1.getName(), "null", null, "111-1111");
+        system.editPatients(patient1.getName(), "John Doe", 31, "555-1234");
     }
 }

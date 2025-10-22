@@ -272,7 +272,7 @@ public class MedicationSystem {
             " (Dosage: " + dosage + ", Quantity: " + quantity + ").");
     }
 
-// TODO: Add method to check and list expired medications 
+    // Method to check and list expired medications 
      public void checkExpiredMedications() {
         System.out.println("\n--- Checking for Expired Medications ---");
         boolean foundExpired = false;
@@ -292,7 +292,7 @@ public class MedicationSystem {
     }
 
 
-// TODO: Add restock functionality (random or specific number)
+    // Method to restock functionality (random or specific number)
      public void restockMedications(int amount) {
         System.out.println("\n--- Restocking Medications ---");
         Random rand = new Random();
@@ -306,8 +306,7 @@ public class MedicationSystem {
         }
     }
 
-// TODO: Connect MedicationSystem to Prescription and Patient classes
-
+    // Connect MedicationSystem to Prescription and Patient classes
       public void linkPrescriptionsToPatients() {
         System.out.println("\n--- Linking Prescriptions to Patients ---");
         int linkedCount = 0;
@@ -323,12 +322,61 @@ public class MedicationSystem {
         System.out.println("Linked " + linkedCount + " prescriptions to patients.");
     }
 
+    // Method Prints a list of all prescription’s issued by a specific doctor.
+    public void printPrescriptionsByDoctor(String doctorName) {
+        boolean found = false;
+    
+        for (Prescription pres : prescriptions) {
+            Doctor doc = pres.getDoctor();
+            if (doc != null && doc.getName().equalsIgnoreCase(doctorName)) {
+                System.out.println(pres);
+                found = true;
+            }
+        }
+    
+        if (!found) {
+            System.out.println("No prescriptions found for Dr. " + doctorName);
+        }
+    }
+
+    // Edit patients
+    public void editPatients(String oldName, String name, Integer age, String phoneNumber) {
+        for (Patient p : patients) {
+            if (p.getName().equalsIgnoreCase(oldName)) {
+                boolean updated = false;
+
+                if (name != null && !name.isEmpty()) {
+                    p.setName(name);
+                    updated = true;
+                }
+
+                if (age != null && age > 0) {
+                    p.setAge(age);
+                    updated = true;
+                }
+
+                if (phoneNumber != null && !phoneNumber.isEmpty()) {
+                    p.setPhoneNumber(phoneNumber);
+                    updated = true;
+                }
+
+                if (updated) {
+                    System.out.println("Updated patient: " + p.getName() + "  age: " + p.getAge() + "  phoneNumber: " + p.getPhoneNumber());
+                } else {
+                    System.out.println("No updates made for patient: " + oldName);
+                }
+                return;
+            }
+        }
+
+        System.out.println("No patient found with name: " + oldName);
+    }
+
 // TODO: Generate medication report for all stored medications
 
-// TODO: Edit and delete patients and doctors
+// TODO: Edit and delete  doctors and delete patients
 
 // TODO: Generate a report containing all system data, including drugs, patients, doctors, and prescriptions.
 
-// TODO: Print a list of all prescription’s issued by a specific doctor.
 
 }
