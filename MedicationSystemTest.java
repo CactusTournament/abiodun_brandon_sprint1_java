@@ -151,5 +151,22 @@ public class MedicationSystemTest {
         System.out.println("_______Removing patient information:______");
         system.removePatient(patient2);
         system.addPatient(patient2);
+
+        // Edit doctors
+        System.out.println("\n\n");
+        // Doctor doctor1 = new Doctor(1, "Dr. Smith", 45, "555-8765", "General Practitioner");
+        System.out.println("_______Editing doctor information:______");
+        system.editDoctors(doctor1.getName(), "Dr. John Smith", 46, "555-0000", "Family Medicine");
+        system.editDoctors(doctor1.getName(), "Dr. John Smith", null, "555-1111", null);
+        system.editDoctors(doctor1.getName(), "null", null, "555-2222", null);
+        system.editDoctors(doctor1, "Dr. Smith", 46, "555-8765", "General Practitioner");
+
+        // Remove doctors
+        System.out.println("\n\n");
+        // Doctor doctor1 = new Doctor(1, "Dr. Smith", 45, "555-8765", "General Practitioner");
+        System.out.println("_______Removing doctor information:______");
+        system.removeDoctor(doctor1);
+        system.addDoctor(doctor1);
+
     }
 }

@@ -409,9 +409,82 @@ public class MedicationSystem {
         removePatient(String.valueOf(patient.getID()));
     }
 
-// TODO: Generate medication report for all stored medications
+    // Edit doctors
+    public void editDoctors(String oldName, String name, Integer age, String phoneNumber, String specialization) {
+        for (Doctor d : doctors) {
+            if (d.getName().equalsIgnoreCase(oldName)) {
+                boolean updated = false;
 
-// TODO: Edit and delete doctors
+                if (name != null && !name.isEmpty()) {
+                    d.setName(name);
+                    updated = true;
+                }
+
+                if (age != null && age > 0) {
+                    d.setAge(age);
+                    updated = true;
+                }
+
+                if (phoneNumber != null && !phoneNumber.isEmpty()) {
+                    d.setPhoneNumber(phoneNumber);
+                    updated = true;
+                }
+
+                if (specialization != null && !specialization.isEmpty()) {
+                    d.setSpecialization(specialization);
+                    updated = true;
+                }
+
+                if (updated) {
+                    System.out.println("Updated doctor: " + d.getName() + "  age: " + d.getAge() + "  phoneNumber: " + d.getPhoneNumber() + "  specialization: " + d.getSpecialization());
+                } else {
+                    System.out.println("No updates made for doctor: " + oldName);
+                }
+                return;
+            }
+        }
+
+        System.out.println("No doctor found with name: " + oldName);
+    }
+
+     // Overload: Edit doctor by doctor object
+    public void editDoctors(Doctor doctor, String name, Integer age, String phoneNumber, String specialization) {
+        if (doctor == null) {
+            System.out.println("Invalid doctor reference.");
+            return;
+        }
+        editDoctors(doctor.getName(), name, age, phoneNumber, specialization);
+    }
+
+    // Delete doctors (ID or name)
+    public void removeDoctor(String identifier) {
+        if (identifier == null || identifier.isEmpty()) {
+            System.out.println("Invalid doctor identifier.");
+            return;
+        }
+
+        for (int i = 0; i < doctors.size(); i++) {
+            Doctor doc = doctors.get(i);
+            if (String.valueOf(doc.getID()).equalsIgnoreCase(identifier) || doc.getName().equalsIgnoreCase(identifier)) {
+                doctors.remove(i);
+                System.out.println("Removed doctor: " + doc.getName() + " (ID: " + doc.getID() + ")");
+                return;
+            }
+        }
+
+        System.out.println("No doctor found with ID or name: " + identifier);
+    }
+
+    // Overload: remove by Doctor object
+    public void removeDoctor(Doctor doctor) {
+        if (doctor == null) {
+            System.out.println("Invalid doctor reference.");
+            return;
+        }
+        removeDoctor(String.valueOf(doctor.getID()));
+    }
+
+// TODO: Generate medication report for all stored medications
 
 // TODO: Generate a report containing all system data, including drugs, patients, doctors, and prescriptions.
 
