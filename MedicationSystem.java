@@ -396,10 +396,10 @@ public class MedicationSystem {
     }
 
     // Delete patients (ID or name)
-    public void removePatient(String identifier) {
+    public Patient removePatient(String identifier) {
         if (identifier == null || identifier.isEmpty()) {
             System.out.println("Invalid patient identifier.");
-            return;
+            return null;
         }
 
         for (int i = 0; i < patients.size(); i++) {
@@ -407,11 +407,12 @@ public class MedicationSystem {
             if (String.valueOf(pat.getID()).equalsIgnoreCase(identifier) || pat.getName().equalsIgnoreCase(identifier)) {
                 patients.remove(i);
                 System.out.println("Removed patient: " + pat.getName() + " (ID: " + pat.getID() + ")");
-                return;
+                return pat;
             }
         }
 
         System.out.println("No patient found with ID or name: " + identifier);
+        return null;
     }
 
     // Overload: remove by Patient object
