@@ -31,13 +31,14 @@ public class Menu {
              System.out.println("7: Edit a Patient");
              System.out.println("8: Edit a Doctor");
              System.out.println("9: Edit a Medication");
+             System.out.println("10: Search for a Patient Medication, Doctor, or Patient by name");
             //  System.out.println("5: Print System Report");
             //  System.out.println("5: Check If Meds Are Expired");
             //  System.out.println("6: Process A New Prescription");
             //  System.out.println("7: Print All Scripts For Specific Doctor");
             //  System.out.println("8: Restock the drugs in the pharmacy");
             //  System.out.println("9: print all scripts for specific patient");
-             System.out.println("10: Exit");
+             System.out.println("15: Exit");
              System.out.println("\n--- Enter the number corresponding to your choice: ---\n");
              int option = scanner.nextInt();
              scanner.nextLine();
@@ -69,6 +70,9 @@ public class Menu {
                 case 9:
                     editAMedication(scanner, system);
                     break;
+                case 10:
+                    searchMedicationDoctorPatient(scanner, system);
+                    break;
                 //  case 5:
                 //      printPharmacyReport(system);
                 //      break;
@@ -87,7 +91,7 @@ public class Menu {
                 //  case 9:
                 //      printAllScriptsForPatientByName(scanner,system);
                 //      break;
-                 case 10:
+                 case 15:
                      exit = true;
                      System.out.println("Exiting The System! Good Bye!");
                      break;
@@ -121,6 +125,22 @@ public class Menu {
     //  private static void printPharmacyReport(system system) {
  
     //  }
+     private static void searchMedicationDoctorPatient(Scanner scanner, MedicationSystem system) {
+        System.out.println("\n--- Search For A Medication, Doctor, Or Patient By Name ---");
+
+        System.out.print("Enter Medication, Doctor or Patient's Name To Search: ");
+        String name = scanner.nextLine();
+
+        if (name.isEmpty()) {
+            System.out.println("Invalid input. Please enter a valid name.");
+            return;
+        }
+
+        system.searchAll(name);
+
+        System.out.println("\n");
+ 
+     }
     private static void editAMedication(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Edit A Medication's Information ---");
 
