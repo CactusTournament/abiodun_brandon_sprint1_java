@@ -5,11 +5,6 @@
  * Date: 2024-10-22
  */
 
-/*
-This is an example menu that is set up to show you a way of structuring your project.
-this doesnt have all requirements in it please refer to the sprint doc to view all requirements
- */
-
 import java.util.Scanner;
 import java.time.LocalDate;
  
@@ -34,7 +29,7 @@ public class Menu {
              System.out.println("10: Search for a Patient Medication, Doctor, or Patient by name");
              System.out.println("11: Accept a Prescription");
              System.out.println("12: Add a Patient to a Doctor");
-            //  System.out.println("5: Print System Report");
+             System.out.println("13: Generate Full System Report");
             //  System.out.println("5: Check If Meds Are Expired");
             //  System.out.println("6: Process A New Prescription");
             //  System.out.println("7: Print All Scripts For Specific Doctor");
@@ -80,6 +75,9 @@ public class Menu {
                     break;
                 case 12:
                     addPatientToDoctor(scanner, system);
+                    break;
+                case 13:
+                    generateFullSystemReport(scanner, system);
                     break;
                 //  case 5:
                 //      printPharmacyReport(system);
@@ -133,6 +131,12 @@ public class Menu {
     //  private static void printPharmacyReport(system system) {
  
     //  }
+     private static void generateFullSystemReport(Scanner scanner, MedicationSystem system) {
+        System.out.println("\n--- Generate Full System Report ---");
+        system.generateFullSystemReport();
+        System.out.println("\n");
+ 
+     }
      private static void addPatientToDoctor(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Assign A Patient To A Doctor ---");
 
@@ -146,6 +150,7 @@ public class Menu {
 
         System.out.println("\n");
      }
+
      private static void acceptPrescription(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Accept A Prescription ---");
 
