@@ -32,6 +32,7 @@ public class Menu {
              System.out.println("8: Edit a Doctor");
              System.out.println("9: Edit a Medication");
              System.out.println("10: Search for a Patient Medication, Doctor, or Patient by name");
+             System.out.println("11: Accept a Prescription");
             //  System.out.println("5: Print System Report");
             //  System.out.println("5: Check If Meds Are Expired");
             //  System.out.println("6: Process A New Prescription");
@@ -72,6 +73,9 @@ public class Menu {
                     break;
                 case 10:
                     searchMedicationDoctorPatient(scanner, system);
+                    break;
+                case 11:
+                    acceptPrescription(scanner, system);
                     break;
                 //  case 5:
                 //      printPharmacyReport(system);
@@ -125,6 +129,31 @@ public class Menu {
     //  private static void printPharmacyReport(system system) {
  
     //  }
+     private static void acceptPrescription(Scanner scanner, MedicationSystem system) {
+        System.out.println("\n--- Accept A Prescription ---");
+
+        System.out.print("Enter Patient Name: ");
+        String patientName = scanner.nextLine();;
+        
+
+        System.out.print("Enter Doctor Name: ");
+        String doctorName = scanner.nextLine();;
+
+        System.out.print("Enter Medication ID: ");
+        String medicationID = scanner.nextLine();
+
+        System.out.print("Enter Dosage Instructions: ");
+        String dosageInstructions = scanner.nextLine();
+
+        System.out.print("Enter Quantity Prescribed: ");
+        int quantityPrescribed = scanner.nextInt();
+        scanner.nextLine();
+
+        system.acceptPrescription(patientName, doctorName, medicationID, dosageInstructions, quantityPrescribed);
+
+        System.out.println("\n");
+     }
+
      private static void searchMedicationDoctorPatient(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Search For A Medication, Doctor, Or Patient By Name ---");
 
@@ -141,6 +170,7 @@ public class Menu {
         System.out.println("\n");
  
      }
+
     private static void editAMedication(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Edit A Medication's Information ---");
 
