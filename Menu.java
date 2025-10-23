@@ -33,6 +33,7 @@ public class Menu {
              System.out.println("9: Edit a Medication");
              System.out.println("10: Search for a Patient Medication, Doctor, or Patient by name");
              System.out.println("11: Accept a Prescription");
+             System.out.println("12: Add a Patient to a Doctor");
             //  System.out.println("5: Print System Report");
             //  System.out.println("5: Check If Meds Are Expired");
             //  System.out.println("6: Process A New Prescription");
@@ -76,6 +77,9 @@ public class Menu {
                     break;
                 case 11:
                     acceptPrescription(scanner, system);
+                    break;
+                case 12:
+                    addPatientToDoctor(scanner, system);
                     break;
                 //  case 5:
                 //      printPharmacyReport(system);
@@ -129,6 +133,19 @@ public class Menu {
     //  private static void printPharmacyReport(system system) {
  
     //  }
+     private static void addPatientToDoctor(Scanner scanner, MedicationSystem system) {
+        System.out.println("\n--- Assign A Patient To A Doctor ---");
+
+        System.out.print("Enter Doctor's Name: ");
+        String doctorName = scanner.nextLine();
+
+        System.out.print("Enter Patient's Name: ");
+        String patientName = scanner.nextLine();
+
+        system.addPatientToDoctor(doctorName, patientName);
+
+        System.out.println("\n");
+     }
      private static void acceptPrescription(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Accept A Prescription ---");
 
