@@ -26,6 +26,8 @@ public class Menu {
              System.out.println("2: Add A New Doctor");
              System.out.println("3: Add A New Medication To The Pharmacy");
              System.out.println("4: Delete a Patient");
+             System.out.println("5: Delete a doctor");
+             System.out.println("6: Delete a medication");
             //  System.out.println("5: Print System Report");
             //  System.out.println("5: Check If Meds Are Expired");
             //  System.out.println("6: Process A New Prescription");
@@ -49,7 +51,13 @@ public class Menu {
                 case 4:
                     deleteAPatient(scanner, system);
                     break;
-                //  case 4:
+                case 5:
+                    deleteADoctor(scanner, system);
+                    break;
+                case 6:
+                    deleteAMedication(scanner, system);
+                    break;
+                //  case 5:
                 //      printPharmacyReport(system);
                 //      break;
                 //  case 5:
@@ -101,6 +109,37 @@ public class Menu {
     //  private static void printPharmacyReport(system system) {
  
     //  }
+    private static void deleteAMedication(Scanner scanner, MedicationSystem system) {
+        System.out.println("\n--- Delete A Medication From The Pharmacy ---");
+
+        System.out.print("Enter Medication ID or Name to Delete: ");
+        String identifier = scanner.nextLine();
+
+        if (identifier.isEmpty()) {
+            System.out.println("Invalid input. Please enter a valid medication ID or name.");
+            return;
+        }
+
+        system.removeMedication(identifier);
+
+        System.out.println("\n");
+    }
+
+    private static void deleteADoctor(Scanner scanner, MedicationSystem system) {
+        System.out.println("\n--- Delete a Doctor From The System ---");
+
+        System.out.print("Enter Doctor ID or Name to Delete: ");
+        String identifier = scanner.nextLine();
+
+        if (identifier.isEmpty()) {
+            System.out.println("Invalid input. Please enter a valid doctor ID or name.");
+            return;
+        }
+
+        system.removeDoctor(identifier);
+
+        System.out.println("\n");
+    }
 
     private static void deleteAPatient(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Delete A Patient From The System ---");
@@ -115,9 +154,6 @@ public class Menu {
 
         system.removePatient(identifier);
 
-        // System.out.println("\n");
-
-        // system.removePatient(id);
         System.out.println("\n");
     }
  
