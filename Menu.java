@@ -15,32 +15,32 @@ public class Menu {
  
          Scanner scanner = new Scanner(System.in);
          while (!exit){
-             System.out.println("\n=====Welcome To The Pharmacy Med Tracking System=====");
-             System.out.println("What would you like to do?");
-             System.out.println("1: Add A New Patient");
-             System.out.println("2: Add A New Doctor");
-             System.out.println("3: Add A New Medication");
-             System.out.println("4: Delete a Patient");
-             System.out.println("5: Delete a Doctor");
-             System.out.println("6: Delete a Medication");
-             System.out.println("7: Edit a Patient");
-             System.out.println("8: Edit a Doctor");
-             System.out.println("9: Edit a Medication");
-             System.out.println("10: Search for a Patient Medication, Doctor, or Patient by name");
-             System.out.println("11: Accept a Prescription");
-             System.out.println("12: Add a Patient to a Doctor");
-             System.out.println("13: Generate Full System Report");
-             System.out.println("14: Check for Expired Medications");
+            System.out.println("\n=====Welcome To The Pharmacy Med Tracking System=====");
+            System.out.println("What would you like to do?");
+            System.out.println("1: Add A New Patient");
+            System.out.println("2: Add A New Doctor");
+            System.out.println("3: Add A New Medication");
+            System.out.println("4: Delete a Patient");
+            System.out.println("5: Delete a Doctor");
+            System.out.println("6: Delete a Medication");
+            System.out.println("7: Edit a Patient");
+            System.out.println("8: Edit a Doctor");
+            System.out.println("9: Edit a Medication");
+            System.out.println("10: Search for a Patient Medication, Doctor, or Patient by name");
+            System.out.println("11: Accept a Prescription");
+            System.out.println("12: Add a Patient to a Doctor");
+            System.out.println("13: Generate Full System Report");
+            System.out.println("14: Check for Expired Medications");
+            System.out.println("15: Print All prescriptions For a Specific Doctor");
             //  System.out.println("5: Check If Meds Are Expired");
             //  System.out.println("6: Process A New Prescription");
-            //  System.out.println("7: Print All Scripts For Specific Doctor");
             //  System.out.println("8: Restock the drugs in the pharmacy");
             //  System.out.println("9: print all scripts for specific patient");
-             System.out.println("15: Exit");
-             System.out.println("\n--- Enter the number corresponding to your choice: ---\n");
-             int option = scanner.nextInt();
-             scanner.nextLine();
-             switch (option) {
+            System.out.println("20: Exit");
+            System.out.println("\n--- Enter the number corresponding to your choice: ---\n");
+            int option = scanner.nextInt();
+            scanner.nextLine();
+            switch (option) {
                 case 1:
                      addANewPatient(scanner, system);
                      break;
@@ -82,15 +82,15 @@ public class Menu {
                     break;
                  case 14:
                     checkExpiredMeds(scanner, system);
-                     break;
+                    break;
+                 case 15:
+                    printPrescriptionsForSpecificDoctor(scanner,system);
+                    break;
                 //  case 5:
                 //      printPharmacyReport(system);
                 //      break;
                 //  case 6:
                 //      processANewScript(scanner,system);
-                //      break;
-                //  case 7:
-                //      printScriptsForSpecificDoctor(scanner,system);
                 //      break;
                 //  case 8:
                 //      restockPharmacyDrugs(scanner,system);
@@ -98,7 +98,7 @@ public class Menu {
                 //  case 9:
                 //      printAllScriptsForPatientByName(scanner,system);
                 //      break;
-                 case 15:
+                 case 20:
                      exit = true;
                      System.out.println("Exiting The System! Good Bye!");
                      break;
@@ -117,20 +117,28 @@ public class Menu {
  
     //  }
  
-    //  private static void printScriptsForSpecificDoctor(Scanner scanner, system system) {
- 
-    //  }
- 
+    
     //  private static void processANewScript(Scanner scanner, system system) {
- 
+        
     //  }
- 
+    
     
     //  private static void printPharmacyReport(system system) {
         
     //  }
+    
+    private static void printPrescriptionsForSpecificDoctor(Scanner scanner, MedicationSystem system) {
+        System.out.println("\n--- Print All Prescriptions For A Specific Doctor ---");
 
-     private static void checkExpiredMeds(Scanner scanner, MedicationSystem system) {
+        System.out.print("Enter Doctor's Name: ");
+        String doctorName = scanner.nextLine();
+
+        system.printPrescriptionsByDoctor(doctorName);
+
+        System.out.println("\n");
+    }
+
+    private static void checkExpiredMeds(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Check For Expired Medications ---");
         system.checkExpiredMedications();
         System.out.println("\n");

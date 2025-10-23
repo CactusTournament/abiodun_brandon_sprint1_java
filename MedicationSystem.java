@@ -312,7 +312,7 @@ public class MedicationSystem {
 
 
     // Method to restock functionality (random or specific number)
-     public void restockMedications(int amount) {
+    public void restockMedications(int amount) {
         System.out.println("\n--- Restocking Medications ---");
         Random rand = new Random();
 
@@ -326,7 +326,7 @@ public class MedicationSystem {
     }
 
     // Connect MedicationSystem to Prescription and Patient classes
-      public void linkPrescriptionsToPatients() {
+    public void linkPrescriptionsToPatients() {
         System.out.println("\n--- Linking Prescriptions to Patients ---");
         int linkedCount = 0;
 
