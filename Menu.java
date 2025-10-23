@@ -30,6 +30,7 @@ public class Menu {
              System.out.println("11: Accept a Prescription");
              System.out.println("12: Add a Patient to a Doctor");
              System.out.println("13: Generate Full System Report");
+             System.out.println("14: Check for Expired Medications");
             //  System.out.println("5: Check If Meds Are Expired");
             //  System.out.println("6: Process A New Prescription");
             //  System.out.println("7: Print All Scripts For Specific Doctor");
@@ -79,11 +80,11 @@ public class Menu {
                 case 13:
                     generateFullSystemReport(scanner, system);
                     break;
+                 case 14:
+                    checkExpiredMeds(scanner, system);
+                     break;
                 //  case 5:
                 //      printPharmacyReport(system);
-                //      break;
-                //  case 5:
-                //      checkExpiredMeds(system);
                 //      break;
                 //  case 6:
                 //      processANewScript(scanner,system);
@@ -124,19 +125,24 @@ public class Menu {
  
     //  }
  
-    //  private static void checkExpiredMeds(system system) {
- 
-    //  }
- 
+    
     //  private static void printPharmacyReport(system system) {
- 
+        
     //  }
+
+     private static void checkExpiredMeds(Scanner scanner, MedicationSystem system) {
+        System.out.println("\n--- Check For Expired Medications ---");
+        system.checkExpiredMedications();
+        System.out.println("\n");
+ 
+     }
      private static void generateFullSystemReport(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Generate Full System Report ---");
         system.generateFullSystemReport();
         System.out.println("\n");
  
      }
+
      private static void addPatientToDoctor(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Assign A Patient To A Doctor ---");
 
