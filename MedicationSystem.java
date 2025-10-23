@@ -110,7 +110,7 @@ public class MedicationSystem {
     }
 
     // Edit by identifier or name
-    public void editMedication(String identifier, String newDosage, Integer newQuantity, LocalDate newExpiryDate) {
+    public void editMedication(String identifier, String newName, String newDosage, Integer newQuantity, LocalDate newExpiryDate) {
         if (identifier == null || identifier.isEmpty()) {
             System.out.println("Invalid medication identifier.");
             return;
@@ -120,6 +120,11 @@ public class MedicationSystem {
 
         for (Medication med : medications) {
             if (med.getID().equalsIgnoreCase(identifier) || med.getName().equalsIgnoreCase(identifier)) {
+                if (newName != null && !newName.isEmpty()) {
+                    med.setName(newName);
+                    updatedAny = true;
+                }
+
                 if (newDosage != null && !newDosage.isEmpty()) {
                     med.setDose(newDosage);
                     updatedAny = true;
@@ -135,7 +140,7 @@ public class MedicationSystem {
                 if (updatedAny) {
                     System.out.println("Updated medication: " + med.getName() + " (ID: " + med.getID() + ")");
                 }
-                return; // only update first match
+                return;
             }
         }
 
@@ -143,12 +148,12 @@ public class MedicationSystem {
     }
 
     // Overload: edit by Medication object
-    public void editMedication(Medication medication, String newDosage, Integer newQuantity, LocalDate newExpiryDate) {
+    public void editMedication(Medication medication, String newName, String newDosage, Integer newQuantity, LocalDate newExpiryDate) {
         if (medication == null) {
             System.out.println("Invalid medication reference.");
             return;
         }
-        editMedication(medication.getID(), newDosage, newQuantity, newExpiryDate);
+        editMedication(medication.getID(), newName, newDosage, newQuantity, newExpiryDate);
     }
 
     // Search across Medications, Patients, and Doctors by name

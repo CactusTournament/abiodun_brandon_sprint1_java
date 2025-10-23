@@ -24,10 +24,13 @@ public class Menu {
              System.out.println("What would you like to do?");
              System.out.println("1: Add A New Patient");
              System.out.println("2: Add A New Doctor");
-             System.out.println("3: Add A New Medication To The Pharmacy");
+             System.out.println("3: Add A New Medication");
              System.out.println("4: Delete a Patient");
-             System.out.println("5: Delete a doctor");
-             System.out.println("6: Delete a medication");
+             System.out.println("5: Delete a Doctor");
+             System.out.println("6: Delete a Medication");
+             System.out.println("7: Edit a Patient");
+             System.out.println("8: Edit a Doctor");
+             System.out.println("9: Edit a Medication");
             //  System.out.println("5: Print System Report");
             //  System.out.println("5: Check If Meds Are Expired");
             //  System.out.println("6: Process A New Prescription");
@@ -56,6 +59,15 @@ public class Menu {
                     break;
                 case 6:
                     deleteAMedication(scanner, system);
+                    break;
+                case 7:
+                    editAPatient(scanner, system);
+                    break;
+                case 8:
+                    editADoctor(scanner, system);
+                    break;
+                case 9:
+                    editAMedication(scanner, system);
                     break;
                 //  case 5:
                 //      printPharmacyReport(system);
@@ -109,6 +121,98 @@ public class Menu {
     //  private static void printPharmacyReport(system system) {
  
     //  }
+    private static void editAMedication(Scanner scanner, MedicationSystem system) {
+        System.out.println("\n--- Edit A Medication's Information ---");
+
+        System.out.print("Enter Medication ID or Name to Edit: ");
+        String identifier = scanner.nextLine();
+
+        if (identifier.isEmpty()) {
+            System.out.println("Invalid input. Please enter a valid Medication ID or name.");
+            return;
+        }
+
+        System.out.print("Enter New Name (leave blank to keep current): ");
+        String newName = scanner.nextLine();
+
+        System.out.print("Enter New Dose (leave blank to keep current): ");
+        String newDose = scanner.nextLine();
+
+        System.out.print("Enter New Quantity In Stock (or -1 to keep current): ");
+        int newQuantityInStock = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Enter New Expiry Date (YYYY-MM-DD) (leave blank to keep current): ");
+        String newExpiryDateStr = scanner.nextLine();
+        LocalDate newExpiryDate = null;
+        if (!newExpiryDateStr.isEmpty()) {
+            String[] dateParts = newExpiryDateStr.split("-");
+            int year = Integer.parseInt(dateParts[0]);
+            int month = Integer.parseInt(dateParts[1]);
+            int day = Integer.parseInt(dateParts[2]);
+            newExpiryDate = LocalDate.of(year, month, day);
+        }
+
+        system.editMedication(identifier, newName.isEmpty() ? null : newName, newDose.isEmpty() ? null : newDose, newQuantityInStock == -1 ? -1 : newQuantityInStock, newExpiryDate);
+
+        System.out.println("\n");
+    }
+
+    private static void editADoctor(Scanner scanner, MedicationSystem system) {
+        System.out.println("\n--- Edit A Doctor's Information ---");
+
+        System.out.print("Enter Doctor's Name to Edit: ");
+        String identifier = scanner.nextLine();
+
+        if (identifier.isEmpty()) {
+            System.out.println("Invalid input. Please enter a valid Doctor ID or name.");
+            return;
+        }
+
+        System.out.print("Enter New Name (leave blank to keep current): ");
+        String newName = scanner.nextLine();
+
+        System.out.print("Enter New Age (or -1 to keep current): ");
+        int newAge = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Enter New Phone Number (leave blank to keep current): ");
+        String newPhone = scanner.nextLine();
+
+        System.out.print("Enter New Specialization (leave blank to keep current): ");
+        String newSpecialization = scanner.nextLine();
+
+        system.editDoctors(identifier, newName.isEmpty() ? null : newName, newAge == -1 ? -1 : newAge, newPhone.isEmpty() ? null : newPhone, newSpecialization.isEmpty() ? null : newSpecialization);
+
+        System.out.println("\n");
+    }
+
+    private static void editAPatient(Scanner scanner, MedicationSystem system) {
+        System.out.println("\n--- Edit A Patient's Information ---");
+
+        System.out.print("Enter Patient Name to Edit: ");
+        String identifier = scanner.nextLine();
+
+        if (identifier.isEmpty()) {
+            System.out.println("Invalid input. Please enter a valid patient ID or name.");
+            return;
+        }
+
+        System.out.print("Enter New Name (leave blank to keep current): ");
+        String newName = scanner.nextLine();
+
+        System.out.print("Enter New Age (or -1 to keep current): ");
+        int newAge = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Enter New Phone Number (leave blank to keep current): ");
+        String newPhone = scanner.nextLine();
+
+        system.editPatients(identifier, newName.isEmpty() ? null : newName, newAge == -1 ? -1 : newAge, newPhone.isEmpty() ? null : newPhone);
+
+        System.out.println("\n");
+    }
+
     private static void deleteAMedication(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Delete A Medication From The Pharmacy ---");
 

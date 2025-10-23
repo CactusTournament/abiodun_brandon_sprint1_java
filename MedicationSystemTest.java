@@ -30,7 +30,7 @@ public class MedicationSystemTest {
         System.out.println("\n\n");
         system.addMedication(med1);
         system.addMedication(med1); // Should fail (already exists)
-        system.editMedication(med1, null, 6, null); 
+        system.editMedication(med1, null, null, 6, null); 
 
         System.out.println("\n\n");
         system.addMedication(med3);
@@ -50,12 +50,12 @@ public class MedicationSystemTest {
         System.out.println("\n\n");
         system.addMedication(med1);
         system.addMedication(med2);
-        system.editMedication("M003", "50mg", 40, LocalDate.of(2025, 8, 31));
-        system.editMedication("Ibuprofen", null, 100, null);
-        system.editMedication(med2, null, 25, null);
+        system.editMedication("M003", null, "50mg", 40, LocalDate.of(2025, 8, 31));
+        system.editMedication("Ibuprofen", null, null, 100, null);
+        system.editMedication(med2, null, null, 25, null);
 
         system.removeMedication("M002"); 
-        system.editMedication(med2, null, 25, null); // Should fail (not found)
+        system.editMedication(med2, null, null, 25, null); // Should fail (not found)
 
         System.out.println("\n\n");
         System.out.println("_______Adding patients and doctors to the system:______");
