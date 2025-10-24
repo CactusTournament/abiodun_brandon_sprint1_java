@@ -117,9 +117,9 @@ public class MedicationSystemTest {
         system.restockMedications(15);  // restock each medication by 15 units
 
         // Test prescription linking to patients 
-        // System.out.println("\n\n");
-        // System.out.println("_______Testing prescription linking_______");
-        // system.linkPrescriptionsToPatients();
+        System.out.println("\n\n");
+        System.out.println("_______Testing prescription linking_______");
+        system.linkPrescriptionsToPatients();
 
         // Print prescriptions for patient to confirm link worked
         patient1.printPrescriptions();
@@ -176,6 +176,10 @@ public class MedicationSystemTest {
         System.out.println("\n\n");
         System.out.println("_______Generating full system report:______");
         system.generateFullSystemReport();
+
+        System.out.println("\n\n");
+        System.out.println("______Generate annual prescription report:______");
+        system.generateAnnualPrescriptionSummary();
 
         System.out.println("\n\nAll tests completed successfully!");
 
