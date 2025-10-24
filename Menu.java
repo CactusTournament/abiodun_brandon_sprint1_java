@@ -2,7 +2,7 @@
  * Menu for the pharmacy system to manage patient drugs and information.
  * 
  * Author: Abiodun Magret Oyedele
- * Date: 2024-10-22
+ * Date: 2024-10-23
  */
 
 import java.util.Scanner;
@@ -32,11 +32,9 @@ public class Menu {
             System.out.println("13: Generate Full System Report");
             System.out.println("14: Check for Expired Medications");
             System.out.println("15: Print All prescriptions For a Specific Doctor");
-            //  System.out.println("5: Check If Meds Are Expired");
-            //  System.out.println("6: Process A New Prescription");
-            //  System.out.println("8: Restock the drugs in the pharmacy");
-            //  System.out.println("9: print all scripts for specific patient");
-            System.out.println("20: Exit");
+            System.out.println("16: Print All Patients Annual Prescription Report");
+            System.out.println("17: Restock the drugs in the pharmacy");
+            System.out.println("18: Exit");
             System.out.println("\n--- Enter the number corresponding to your choice: ---\n");
             int option = scanner.nextInt();
             scanner.nextLine();
@@ -84,21 +82,15 @@ public class Menu {
                     checkExpiredMeds(scanner, system);
                     break;
                  case 15:
-                    printPrescriptionsForSpecificDoctor(scanner,system);
+                    printPrescriptionsForSpecificDoctor(scanner, system);
                     break;
-                //  case 5:
-                //      printPharmacyReport(system);
-                //      break;
-                //  case 6:
-                //      processANewScript(scanner,system);
-                //      break;
-                //  case 8:
-                //      restockPharmacyDrugs(scanner,system);
-                //      break;
-                //  case 9:
-                //      printAllScriptsForPatientByName(scanner,system);
-                //      break;
-                 case 20:
+                case 16:
+                    printAllPatientsAnnualPrescriptionReport(scanner, system);
+                    break;
+                case 17:
+                     restockMedications(scanner, system);
+                     break;
+                 case 18:
                      exit = true;
                      System.out.println("Exiting The System! Good Bye!");
                      break;
@@ -108,24 +100,33 @@ public class Menu {
          }
          scanner.close();
      }
- 
-    //  private static void printAllScriptsForPatientByName(Scanner scanner, system system) {
- 
-    //  }
- 
-    //  private static void restockPharmacyDrugs(Scanner scanner, system system) {
- 
-    //  }
- 
-    
-    //  private static void processANewScript(Scanner scanner, system system) {
-        
-    //  }
-    
-    
-    //  private static void printPharmacyReport(system system) {
-        
-    //  }
+
+     private static void restockMedications(Scanner scanner, MedicationSystem system) {
+        System.out.println("\n--- Restock Pharmacy Drugs ---");
+
+        System.out.print("Enter Medication ID to Restock: ");
+        String identifier = scanner.nextLine();
+
+        if (identifier.isEmpty()) {
+            System.out.println("Invalid input. Please enter a valid Medication ID.");
+            return;
+        }
+
+        System.out.print("Enter Quantity to Add: ");
+        int quantityToAdd = scanner.nextInt();
+        scanner.nextLine();
+
+        system.restockMedications(quantityToAdd);
+
+        System.out.println("\n");
+     }
+
+    private static void printAllPatientsAnnualPrescriptionReport(Scanner scanner, MedicationSystem system) {
+        System.out.println("\n--- Annual Report For All Patients Prescriptions---");
+
+        system.generateAnnualPrescriptionSummary();
+        System.out.println("\n");
+    }
     
     private static void printPrescriptionsForSpecificDoctor(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Print All Prescriptions For A Specific Doctor ---");
@@ -144,6 +145,7 @@ public class Menu {
         System.out.println("\n");
  
      }
+
      private static void generateFullSystemReport(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Generate Full System Report ---");
         system.generateFullSystemReport();

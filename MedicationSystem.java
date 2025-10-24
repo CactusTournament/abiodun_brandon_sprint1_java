@@ -505,7 +505,7 @@ public class MedicationSystem {
         removeDoctor(String.valueOf(doctor.getID()));
     }
 
-// TODO: Generate medication report for all stored medications
+    // Generate medication report for all stored medications
     public void generateMedicationReport() {
         System.out.println("\n--- Medication Report ---");
 
@@ -530,7 +530,7 @@ public class MedicationSystem {
         }
     }
 
-// TODO: Generate a report containing all system data, including drugs, patients, doctors, and prescriptions.
+    // Generate a report containing all system data, including drugs, patients, doctors, and prescriptions.
     public void generateFullSystemReport() {
         System.out.println("\n=== FULL SYSTEM REPORT ===");
 
@@ -603,7 +603,30 @@ public class MedicationSystem {
             );
         }
         System.out.println();
+    }
 
+    // Generate a report of all the patients' prescriptions for the past year
+    public void generateAnnualPrescriptionSummary() {
+        System.out.println("\n--- Annual Prescription Summary ---");
+        LocalDate oneYearAgo = LocalDate.now().minusYears(1);
+        List<String> prescribedMedications = new ArrayList<>();
 
+        for (Prescription pres : prescriptions) {
+            if (pres.getPrescriptionExpiry().isAfter(oneYearAgo)) {
+                String medName = pres.getMedication().getName();
+                if (!prescribedMedications.contains(medName)) {
+                    prescribedMedications.add(medName);
+                }
+            }
         }
+
+        if (prescribedMedications.isEmpty()) {
+            System.out.println("No prescriptions issued in the past year.");
+        } else {
+            System.out.println("Medications prescribed in the past year:");
+            for (String medName : prescribedMedications) {
+                System.out.println("- " + medName);
+            }
+        }
+    }
 }
