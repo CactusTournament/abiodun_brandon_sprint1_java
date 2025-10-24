@@ -56,11 +56,12 @@ public class Prescription {
     @Override
     public String toString() {
         return "Prescription ID = " + id +
-            ", Medication = [" + medication + "]" +
+            ", Medication = " + (medication != null ? medication.getName() : "N/A") +
             ", Patient = " + (patient != null ? patient.getName() + " (ID=" + patient.getPatientID() + ")" : "N/A") +
             ", Doctor = " + (doctor != null ? doctor.getName() + " (ID=" + doctor.getID() + ")" : "N/A") +
             ", Dosage = " + dosage +
             ", Quantity = " + prescribedQuantity +
             ", Expiry = " + prescriptionExpiry;
     }
+
 }
