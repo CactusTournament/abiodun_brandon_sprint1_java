@@ -294,3 +294,104 @@ To ensure that all components of the Pharmacy System work as expected, a set of 
 
 > **Note:**  
 > These test files validate that all classes and their relationships (such as Doctor–Patient–Prescription) behave correctly and that the overall system performs as intended.
+
+
+## 2. DEVELOPMENT DOCUMENTATION
+### 2.1. Javadocs
+All classes, attributes, and methods are documented using **Javadoc comments**, providing clear descriptions of their purpose and usage.
+Example:
+
+```
+/*
+ * Model class representing a patient in the pharmacy system.
+ * Stores patient properties (ID, name, age, phoneNumber) 
+ * and their list of prescriptions.
+ * This class extends the Person class.
+ * 
+ * Author: Abiodun Magret Oyedele
+ * Updated by: Brandon Maloney
+ * Date: 2025-10-21
+ */
+
+public class Patient extends Person {
+    private final int patientID;
+    private final List<Prescription> prescriptions;
+}
+```
+
+### 2.2 Source Code Directory Structure
+```
+abiodun_brandon_sprint1_java/
+    |-- Doctor.java
+    |-- DoctorTest.java
+    |-- Medication.java
+    |-- MedicationTest.java
+    |-- MedicationSystem.java
+    |-- MedicationSystemTest.java
+    |-- Menu.java
+    |-- Patient.java
+    |-- PatientTest.java
+    |-- Person.java
+    |-- PersonTest.java
+    |-- Prescription.java
+    |-- PrescriptionTest.java
+    |-- README.md
+```
+
+- Each test file contains testing each class independently
+- **README.md:** Provides instructions and project overview
+
+### 2.3. Build Process
+1. Navigate to the project folder:
+    `cd MedicationSystem`
+2. Compile all `.java` files:
+    `javac *.java`
+3. Run the `main` class:
+    `java Menu`
+> For IDEs like IntelliJ, Eclipse, or VS Code, simply click the run button to compile and execute the program.
+
+### 2.4. Compiler-Time Dependencies
+- Java SE Development Kit (JDK 17 or higher)
+- No external libraries are required; all functionality uses the Java Standard Library.
+
+### 2.5. Development Standards
+- Class names use PascalCase (`MedicationSystem`, `Patient`).
+- Method and variable names use camelCase (`addPrescription`, `quantityInStock`).
+- Each class is documented with Javadoc comments.
+- Input validation is implemented for robust error handling.
+- Lists and object references manage entity relationships.
+
+### 2.6. Theoretical Database Design
+Even though the system uses in-memory lists, the database could be designed as follows:
+
+#### Entities and Attributes:
+- **Patient:** patientID, name, age, phoneNumber.
+- **Doctor:** doctorID, name, age, phoneNumber, specialization
+- **Medication:** medicationID, name, dose, quantityInStock, expiryDate.
+- **Prescription:** prescriptionID, patientID (FK), doctorID (FK), medicationID (FK), dosage, prescribedQuantity, prescriptionExpiry.
+
+#### Entity Relationships:
+- One **Doctor** manages many **Patients**.
+- One **Patient** can have many **Prescriptions**.
+- One **Prescription** is linked to one **Doctor**, one **Patient**, and one **Medication**.
+- One **Medication** can appear in many **Prescriptions**.
+
+### 2.7. GitHub Repository
+To get the source code:
+
+1. Clone the repository:
+`git clone https://github.com/CactusTournament/abiodun_brandon_sprint1_java.git`
+
+2. Navigate to the project directory:
+`cd abiodun_brandon_sprint1_java`
+
+3. Compile and run as per the **Build Process** section.
+
+### 8. Testing
+Test files are located in the same folder as the source code. Each class has a corresponding test file:
+- `MedicationSystemTest.java:` Tests overall system functionalities.
+- `PatientTest.java:` Tests patient-related methods.
+- `DoctorTest.java:` Tests doctor-related methods
+- `MedicationTest.java:` Tests medication-related methods
+
+> Tests use JUnit to validate core functionalities like adding/removing patients, managing prescriptions, and editing medications.
