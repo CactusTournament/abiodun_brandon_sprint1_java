@@ -124,7 +124,8 @@ The **Pharmacy System** is a console-based Java application designed to help man
     Enter `ctrl D` to terminate the program.
 
 ### 1.4 Class Diagram
-class Person {
+```
+- class Person {
     - int id
     - String name
     - int age
@@ -141,8 +142,8 @@ class Person {
     + toString()
 }
 
-class Doctor {
-    - String specialization
+- class Doctor {
+    - String specialization    
     - List Patient patients
     + Doctor(int ID, String name, int age, String phoneNumber, String specialization)
     + getSpecialization()
@@ -153,18 +154,18 @@ class Doctor {
     + toString()
 }
 
-class Patient {
-    - int patientID
-    - List Prescription prescriptions
-    + Patient(int ID, String name, int age, String phoneNumber)
-    + getPatientID()
-    + addPrescription(pres)
-    + getPrescriptions()
-    + printPrescriptions()
-    + toString()
+- class Patient {
+    - int patientID`
+    - List Prescription prescriptions`
+    + Patient(int ID, String name, int age, String phoneNumber)`
+    + getPatientID()`
+    + addPrescription(pres)`
+    + getPrescriptions()`
+    + printPrescriptions()`
+    + toString()`
 }
 
-class Medication {
+- class Medication {
     - String id
     - String name
     - String dose
@@ -246,3 +247,21 @@ class MedicationSystem {
     + generateFullSystemReport()
     + generateAnnualPrescriptionSummary()
 }
+```
+
+#### Inheritance relationships
+Note: `<|--` means `inherits from`
+- Person <|-- Doctor
+- Person <|-- Patient
+
+#### Associations
+- `Doctor (1)` -> `Patient (many)`: `->` means `manages`
+- `Patient (1)` -> `Prescription (many)`: `->` means `has`
+- `Prescription (1)` -> `Doctor (1)`: -> means `issued by`
+- `Prescription (1)` -> `Medication (1)`: -> means `contains`
+- `Prescription (1)` -> `Patient (1)`: -> means `prescribed to`
+- `MedicationSystem (1)` -> `Doctor (many)`: -> means `manages`
+- `MedicationSystem (1)` -> `Patient (many)`: -> means `manages`
+- `MedicationSystem (1)` -> `Medication (many)`: -> means `stores`
+- `MedicationSystem (1)` -> `Prescription (many)`: -> means `tracks`
+
