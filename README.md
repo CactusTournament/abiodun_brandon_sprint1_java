@@ -108,9 +108,9 @@ The **Pharmacy System** is a console-based Java application designed to help man
 #### 1. Launch the program:
     Open your terminal or IDE.
 #### 2. Git clone the repository:
-    `https://github.com/CactusTournament/abiodun_brandon_sprint1_java.git`
+    https://github.com/CactusTournament/abiodun_brandon_sprint1_java.git
 #### 3. Navigate to the branch:
-    `cd abiodun_brandon_sprint1_java`
+    cd abiodun_brandon_sprint1_java
 #### 4. Run the Main Class File: 
     You can do this by:
     - Clicking the run button on your IDE
@@ -316,6 +316,23 @@ Example:
 public class Patient extends Person {
     private final int patientID;
     private final List<Prescription> prescriptions;
+}
+
+/**
+ * Model class representing a medication in the pharmacy system.
+ *
+ * Stores medication properties (id, name, dose, quantityInStock, expiryDate).
+ * This class is intended for use by prescription classes and inventory/tracking components.
+ *
+ * Author: Brandon Maloney
+ * Date: 2025-10-18
+ */
+public class Medication {
+    private String id;
+    private String name;
+    private String dose;
+    private int quantityInStock;
+    private LocalDate expiryDate;
 }
 ```
 
