@@ -250,18 +250,16 @@ class MedicationSystem {
 ```
 
 #### Inheritance relationships
-Note: `<|--` means `inherits from`
-- Person <|-- Doctor
-- Person <|-- Patient
+- Person inherits from Doctor
+- Person inherits from Patient
 
 #### Associations
-- `Doctor (1)` -> `Patient (many)`: `->` means `manages`
-- `Patient (1)` -> `Prescription (many)`: `->` means `has`
-- `Prescription (1)` -> `Doctor (1)`: -> means `issued by`
-- `Prescription (1)` -> `Medication (1)`: -> means `contains`
-- `Prescription (1)` -> `Patient (1)`: -> means `prescribed to`
-- `MedicationSystem (1)` -> `Doctor (many)`: -> means `manages`
-- `MedicationSystem (1)` -> `Patient (many)`: -> means `manages`
-- `MedicationSystem (1)` -> `Medication (many)`: -> means `stores`
-- `MedicationSystem (1)` -> `Prescription (many)`: -> means `tracks`
-
+- One doctor manages many patients
+- One patient has many prescriptions
+- One prescription is issued by one doctor
+- One prescription contains one medication
+- One prescription prescribed to one patient
+- One medicationsystem manages many doctor
+- One medicationsystem manages many patient
+- One medicationsystem stores many medication
+- One medicationsystem tracks many prescription
