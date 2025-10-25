@@ -122,3 +122,127 @@ The **Pharmacy System** is a console-based Java application designed to help man
     - Follow prompts carefully e.g., type doctor names, medication IDs, or quantities as requested.
 #### 6. End the program:
     Enter `ctrl D` to terminate the program.
+
+### 1.4 Class Diagram
+class Person {
+    - int id
+    - String name
+    - int age
+    - String phoneNumber
+    + Person(int ID, String name, int age, String phoneNumber)
+    + getId()
+    + getName()
+    + getAge()
+    + getPhoneNumber()
+    + setId(id)
+    + setName(name)
+    + setAge(age)
+    + setPhoneNumber(phoneNumber)
+    + toString()
+}
+
+class Doctor {
+    - String specialization
+    - List Patient patients
+    + Doctor(int ID, String name, int age, String phoneNumber, String specialization)
+    + getSpecialization()
+    + setSpecialization(specialization)
+    + addPatient(patient)
+    + removePatient(patient)
+    + getPatients()
+    + toString()
+}
+
+class Patient {
+    - int patientID
+    - List Prescription prescriptions
+    + Patient(int ID, String name, int age, String phoneNumber)
+    + getPatientID()
+    + addPrescription(pres)
+    + getPrescriptions()
+    + printPrescriptions()
+    + toString()
+}
+
+class Medication {
+    - String id
+    - String name
+    - String dose
+    - int quantityInStock
+    - LocalDate expiryDate
+    + Medication(String id, String name, String dose, int quantityInStock, LocalDate expiryDate)
+    + getId()
+    + getName()
+    + getDose()
+    + getQuantityInStock()
+    + getExpiryDate()
+    + setId(id)
+    + setName(name)
+    + setDose(dose)
+    + setQuantityInStock(quantity)
+    + setExpiryDate(date)
+    + toString()
+}
+
+class Prescription {
+    - String id
+    - Doctor doctor
+    - Patient patient
+    - Medication medication
+    - String dosage
+    - int prescribedQuantity
+    - LocalDate prescriptionExpiry
+    - int nextID = 1
+    - int prescriptionID
+    + Prescription(Patient patient, Doctor doctor, Medication medication, String dosage, int prescribedQuantity)
+    + getID()
+    + getDoctor()
+    + setDoctor()
+    + getPatient()
+    + setPatient()
+    + getMedication()
+    + setMedication()
+    + getDosage()
+    + setDosage()
+    + getPrescribedQuantity()
+    + setPrescribedQuantity()
+    + getPrescriptionExpiry()
+    + setPrescriptionExpiry()
+    + toString()
+}
+
+class MedicationSystem {
+    - List Patient patients
+    - List Doctor doctors
+    - List Medication medications
+    - List Prescription prescriptions
+    - ChronoLocalDate today
+    + MedicationSystem()
+    + addMedication(Medication medication)
+    + addMedication(String id, String name, String dosage, int quantity, LocalDate expiryDate)
+    + addMedication(String identifier)
+    + viewMedications()
+    + removeMedication(String identifier)
+    + removeMedication(Medication medication)
+    + editMedication(String identifier, String newName, String newDosage, Integer newQuantity, LocalDate newExpiryDate)
+    + editMedication(Medication medication, String newName, String newDosage, Integer newQuantity, LocalDate newExpiryDate)
+    + searchAll(String keyword)
+    + addPatient(Patient patient)
+    + addDoctor(Doctor doctor)
+    + addPatientToDoctor(String doctorName, String patientName)
+    + acceptPrescription(String patientName, String doctorName, String medicationID, String dosage, int prescribedQuantity)
+    + checkExpiredMedications()
+    + restockMedications(int amount)
+    + linkPrescriptionsToPatients()
+    + printPrescriptionsByDoctor(String doctorName)
+    + editPatients(String oldName, String name, Integer age, String phoneNumber)
+    + editPatients(Patient patient, String name, Integer age, String phoneNumber)
+    + removePatient(Patient patient)
+    + editDoctors(String oldName, String name, Integer age, String phoneNumber, String specialization)
+    + editDoctors(Doctor doctor, String name, Integer age, String phoneNumber, String specialization)
+    + removeDoctor(String identifier)
+    + removeDoctor(Doctor doctor)
+    + generateMedicationReport()
+    + generateFullSystemReport()
+    + generateAnnualPrescriptionSummary()
+}
