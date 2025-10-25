@@ -21,7 +21,7 @@ The **Pharmacy System** is a console-based Java application designed to help man
 - **Purpose:** Doctor represents a doctor. This is the base class for both the Patient and Doctor classes.
 - **Attributes:** It contains the following attributes
     + **List of patients:** List of patients they are managing.
-    + **Specialization:** Their Specialization, what they do. ??CHANGE THIS??
+    + **Specialization:** The specific field of medicine or area of expertise the doctor practices in (e.g., cardiology, pediatrics, neurology).
 - **Key Methods:**
     + `Getter` and `Setter` for `Specialization`.
     + `addPatient(Patient patient)`
