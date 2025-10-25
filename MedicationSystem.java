@@ -312,7 +312,6 @@ public class MedicationSystem {
         }
     }
 
-
     // Method to restock functionality (random or specific number)
     public void restockMedications(int amount) {
         System.out.println("\n--- Restocking Medications ---");
