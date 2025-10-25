@@ -113,8 +113,10 @@ The **Pharmacy System** is a console-based Java application designed to help man
     `cd abiodun_brandon_sprint1_java`
 #### 4. Run the Main Class File: 
     You can do this by:
-    - Clicking the run button on the UI
-    - Type `javac menu.java` on the terminal
+    - Clicking the run button on your IDE
+    - Or using the terminal:
+        1. Compile the program: javac Menu.java
+        2. Run the program: java Menu
 #### 5. Menu Options:
     - When the program starts, you will be provided with menu options. - Click the option corresponding to the action you want to carry out.
 #### 6. Input Format:
@@ -263,3 +265,32 @@ class MedicationSystem {
 - One medicationsystem manages many patient
 - One medicationsystem stores many medication
 - One medicationsystem tracks many prescription
+
+
+### 1.5 Test Files
+To ensure that all components of the Pharmacy System work as expected, a set of test files have been provided for each class and the main MedicationSystem.
+
+#### Test File Overview
+- **PatientTest.java:**  
+  Tests the creation, retrieval, and management of patient information.
+
+- **DoctorTest.java:**  
+  Verifies doctor creation, specialization handling, and patient assignment.
+
+- **MedicationTest.java:**  
+  Checks medication creation, stock management, and expiration handling.
+
+- **PrescriptionTest.java:**  
+  Tests prescription creation, linking between patient, doctor, and medication, and stock reduction.
+
+- **MedicationSystemTest.java:**  
+  Ensures overall system integration — adding doctors, patients, medications, and verifying that prescriptions and reports function correctly.
+
+#### How to Run the Tests
+1. Open your **IDE** or your **command-line terminal**.  
+2. Navigate to each test file.  
+3. Run each test file individually using the run 
+4. Review the console output. Each test will print messages confirming whether operations succeeded or failed.
+
+> **Note:**  
+> These test files validate that all classes and their relationships (such as Doctor–Patient–Prescription) behave correctly and that the overall system performs as intended.
