@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -14,10 +15,11 @@ import java.util.Random;
 public class MedicationSystem {
 
     // Make lists private 
-    private List<Medication> medications;
-    private List<Patient> patients;
-    private List<Doctor> doctors;
-    private List<Prescription> prescriptions;
+    private final List<Medication> medications;
+    private final List<Patient> patients;
+    private final List<Doctor> doctors;
+    private final List<Prescription> prescriptions;
+    private ChronoLocalDate today;
 
     // Constructor
     public MedicationSystem() {
@@ -110,7 +112,7 @@ public class MedicationSystem {
     }
 
     // Edit by identifier or name
-    public void editMedication(String identifier, String newDosage, Integer newQuantity, LocalDate newExpiryDate) {
+    public void editMedication(String identifier, String newName, String newDosage, Integer newQuantity, LocalDate newExpiryDate) {
         if (identifier == null || identifier.isEmpty()) {
             System.out.println("Invalid medication identifier.");
             return;
@@ -120,6 +122,11 @@ public class MedicationSystem {
 
         for (Medication med : medications) {
             if (med.getID().equalsIgnoreCase(identifier) || med.getName().equalsIgnoreCase(identifier)) {
+                if (newName != null && !newName.isEmpty()) {
+                    med.setName(newName);
+                    updatedAny = true;
+                }
+
                 if (newDosage != null && !newDosage.isEmpty()) {
                     med.setDose(newDosage);
                     updatedAny = true;
@@ -135,7 +142,7 @@ public class MedicationSystem {
                 if (updatedAny) {
                     System.out.println("Updated medication: " + med.getName() + " (ID: " + med.getID() + ")");
                 }
-                return; // only update first match
+                return;
             }
         }
 
@@ -143,12 +150,12 @@ public class MedicationSystem {
     }
 
     // Overload: edit by Medication object
-    public void editMedication(Medication medication, String newDosage, Integer newQuantity, LocalDate newExpiryDate) {
+    public void editMedication(Medication medication, String newName, String newDosage, Integer newQuantity, LocalDate newExpiryDate) {
         if (medication == null) {
             System.out.println("Invalid medication reference.");
             return;
         }
-        editMedication(medication.getID(), newDosage, newQuantity, newExpiryDate);
+        editMedication(medication.getID(), newName, newDosage, newQuantity, newExpiryDate);
     }
 
     // Search across Medications, Patients, and Doctors by name
@@ -307,7 +314,7 @@ public class MedicationSystem {
 
 
     // Method to restock functionality (random or specific number)
-     public void restockMedications(int amount) {
+    public void restockMedications(int amount) {
         System.out.println("\n--- Restocking Medications ---");
         Random rand = new Random();
 
@@ -321,7 +328,7 @@ public class MedicationSystem {
     }
 
     // Connect MedicationSystem to Prescription and Patient classes
-      public void linkPrescriptionsToPatients() {
+    public void linkPrescriptionsToPatients() {
         System.out.println("\n--- Linking Prescriptions to Patients ---");
         int linkedCount = 0;
 
@@ -396,10 +403,10 @@ public class MedicationSystem {
     }
 
     // Delete patients (ID or name)
-    public void removePatient(String identifier) {
+    public Patient removePatient(String identifier) {
         if (identifier == null || identifier.isEmpty()) {
             System.out.println("Invalid patient identifier.");
-            return;
+            return null;
         }
 
         for (int i = 0; i < patients.size(); i++) {
@@ -407,11 +414,12 @@ public class MedicationSystem {
             if (String.valueOf(pat.getID()).equalsIgnoreCase(identifier) || pat.getName().equalsIgnoreCase(identifier)) {
                 patients.remove(i);
                 System.out.println("Removed patient: " + pat.getName() + " (ID: " + pat.getID() + ")");
-                return;
+                return pat;
             }
         }
 
         System.out.println("No patient found with ID or name: " + identifier);
+        return null;
     }
 
     // Overload: remove by Patient object
@@ -471,10 +479,10 @@ public class MedicationSystem {
     }
 
     // Delete doctors (ID or name)
-    public void removeDoctor(String identifier) {
+    public Doctor removeDoctor(String identifier) {
         if (identifier == null || identifier.isEmpty()) {
             System.out.println("Invalid doctor identifier.");
-            return;
+            return null;
         }
 
         for (int i = 0; i < doctors.size(); i++) {
@@ -482,11 +490,12 @@ public class MedicationSystem {
             if (String.valueOf(doc.getID()).equalsIgnoreCase(identifier) || doc.getName().equalsIgnoreCase(identifier)) {
                 doctors.remove(i);
                 System.out.println("Removed doctor: " + doc.getName() + " (ID: " + doc.getID() + ")");
-                return;
+                return doc;
             }
         }
 
         System.out.println("No doctor found with ID or name: " + identifier);
+        return null;
     }
 
     // Overload: remove by Doctor object
@@ -498,7 +507,7 @@ public class MedicationSystem {
         removeDoctor(String.valueOf(doctor.getID()));
     }
 
-// TODO: Generate medication report for all stored medications
+    // Generate medication report for all stored medications
     public void generateMedicationReport() {
         System.out.println("\n--- Medication Report ---");
 
@@ -523,80 +532,123 @@ public class MedicationSystem {
         }
     }
 
-// TODO: Generate a report containing all system data, including drugs, patients, doctors, and prescriptions.
+    // Generate a report containing all system data, including drugs, patients, doctors, and prescriptions.
     public void generateFullSystemReport() {
         System.out.println("\n=== FULL SYSTEM REPORT ===");
 
-        // Medications
+        // --- Medications ---
         System.out.println("--- Medications ---");
-        LocalDate today = LocalDate.now();
-
-        for (Medication med : medications) {
-            boolean isExpired = med.getExpiryDate().isBefore(today);
-            System.out.println(
-                "Medication ID = " + med.getID() +
-                ", Name = " + med.getName() +
-                ", Dose = " + med.getDose() +
-                ", Quantity In Stock = " + med.getQuantityInStock() +
-                ", Expiry Date = " + med.getExpiryDate() +
-                (isExpired ? " (EXPIRED)" : "")
-            );
+        if (medications.isEmpty()) {
+            System.out.println("No medications available.");
+        } else {
+            LocalDate today = LocalDate.now();
+            for (Medication med : medications) {
+                if (med != null) { // Safety check
+                    boolean isExpired = med.getExpiryDate() != null && med.getExpiryDate().isBefore(today);
+                    System.out.println(
+                        "Medication ID = " + med.getID() +
+                        ", Name = " + med.getName() +
+                        ", Dose = " + med.getDose() +
+                        ", Quantity In Stock = " + med.getQuantityInStock() +
+                        ", Expiry Date = " + med.getExpiryDate() +
+                        (isExpired ? " (EXPIRED)" : "")
+                    );
+                }
+            }
         }
         System.out.println();
 
-        // Patients
-        System.out.println("\n--- Patients ---");
+        // --- Patients ---
+        System.out.println("--- Patients ---");
         if (patients.isEmpty()) {
             System.out.println("No patients registered.");
         } else {
             for (Patient pat : patients) {
-                System.out.println("\n");
-                System.out.println(pat);
-                // Optionally, print their prescriptions
-                if (!pat.getPrescriptions().isEmpty()) {
-                    System.out.println("\n  Prescriptions:");
-                    for (Prescription pres : pat.getPrescriptions()) {
-                        System.out.println("    Prescription ID = " + pres.getID() +
-                                        ", Medication = " + pres.getMedication().getName() +
-                                        ", Dosage = " + pres.getDosage() +
-                                        ", Quantity = " + pres.getPrescribedQuantity() +
-                                        ", Expiry = " + pres.getPrescriptionExpiry());
+                if (pat != null) {
+                    System.out.println(pat);
+                    if (!pat.getPrescriptions().isEmpty()) {
+                        System.out.println("  Prescriptions:");
+                        for (Prescription pres : pat.getPrescriptions()) {
+                            if (pres != null && pres.getMedication() != null) {
+                                System.out.println("    Prescription ID = " + pres.getID() +
+                                                ", Medication = " + pres.getMedication().getName() +
+                                                ", Dosage = " + pres.getDosage() +
+                                                ", Quantity = " + pres.getPrescribedQuantity() +
+                                                ", Expiry = " + pres.getPrescriptionExpiry());
+                            }
+                        }
                     }
                 }
             }
         }
+        System.out.println();
 
-        // Doctors
-        System.out.println("\n--- Doctors ---");
+        // --- Doctors ---
+        System.out.println("--- Doctors ---");
         if (doctors.isEmpty()) {
             System.out.println("No doctors registered.");
         } else {
             for (Doctor doc : doctors) {
-                System.out.println(doc);
-                if (!doc.getPatients().isEmpty()) {
-                    System.out.println("\n  Patients:");
-                    for (Patient pat : doc.getPatients()) {
-                        System.out.println("    " + pat.getName() + " (ID=" + pat.getPatientID() + ")");
+                if (doc != null) {
+                    System.out.println(doc);
+                    if (!doc.getPatients().isEmpty()) {
+                        System.out.println("  Patients:");
+                        for (Patient pat : doc.getPatients()) {
+                            if (pat != null) {
+                                System.out.println("    " + pat.getName() + " (ID=" + pat.getPatientID() + ")");
+                            }
+                        }
                     }
                 }
             }
         }
-
-        // Prescriptions
-        System.out.println("\n--- Prescriptions ---");
-        for (Prescription pres : prescriptions) {
-            System.out.println(
-                "Prescription ID = " + pres.getID() +
-                ", Medication = " + pres.getMedication().getName() +
-                ", Patient = " + (pres.getPatient() != null ? pres.getPatient().getName() + " (ID=" + pres.getPatient().getPatientID() + ")" : "N/A") +
-                ", Doctor = " + (pres.getDoctor() != null ? pres.getDoctor().getName() + " (ID=" + pres.getDoctor().getID() + ")" : "N/A") +
-                ", Dosage = " + pres.getDosage() +
-                ", Quantity = " + pres.getPrescribedQuantity() +
-                ", Expiry = " + pres.getPrescriptionExpiry()
-            );
-        }
         System.out.println();
 
-
+        // --- Prescriptions ---
+        System.out.println("--- Prescriptions ---");
+        if (prescriptions.isEmpty()) {
+            System.out.println("No prescriptions issued.");
+        } else {
+            for (Prescription pres : prescriptions) {
+                if (pres != null) {
+                    System.out.println(
+                        "Prescription ID = " + pres.getID() +
+                        ", Medication = " + (pres.getMedication() != null ? pres.getMedication().getName() : "N/A") +
+                        ", Patient = " + (pres.getPatient() != null ? pres.getPatient().getName() + " (ID=" + pres.getPatient().getPatientID() + ")" : "N/A") +
+                        ", Doctor = " + (pres.getDoctor() != null ? pres.getDoctor().getName() + " (ID=" + pres.getDoctor().getID() + ")" : "N/A") +
+                        ", Dosage = " + pres.getDosage() +
+                        ", Quantity = " + pres.getPrescribedQuantity() +
+                        ", Expiry = " + pres.getPrescriptionExpiry()
+                    );
+                }
+            }
         }
+        System.out.println();
+    }
+
+
+    // Generate a report of all the patients' prescriptions for the past year
+    public void generateAnnualPrescriptionSummary() {
+        System.out.println("\n--- Annual Prescription Summary ---");
+        LocalDate oneYearAgo = LocalDate.now().minusYears(1);
+        List<String> prescribedMedications = new ArrayList<>();
+
+        for (Prescription pres : prescriptions) {
+            if (pres.getPrescriptionExpiry().isAfter(oneYearAgo)) {
+                String medName = pres.getMedication().getName();
+                if (!prescribedMedications.contains(medName)) {
+                    prescribedMedications.add(medName);
+                }
+            }
+        }
+
+        if (prescribedMedications.isEmpty()) {
+            System.out.println("No prescriptions issued in the past year.");
+        } else {
+            System.out.println("Medications prescribed in the past year:");
+            for (String medName : prescribedMedications) {
+                System.out.println("- " + medName);
+            }
+        }
+    }
 }
