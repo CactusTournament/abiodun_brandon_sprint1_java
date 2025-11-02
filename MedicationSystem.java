@@ -21,7 +21,10 @@ public class MedicationSystem {
     private final List<Prescription> prescriptions;
     private ChronoLocalDate today;
 
-    // Constructor
+    /*
+     * Constructor for the MedicationSystem class.
+     * Initializes empty lists for medications, patients, doctors, and prescriptions.
+     */
     public MedicationSystem() {
         medications = new ArrayList<>();
         patients = new ArrayList<>();
@@ -30,7 +33,10 @@ public class MedicationSystem {
     }
 
 
-    // Add a medication object directly
+    /*
+     * Method to add a medication to the system.
+     * @param medication the Medication object to be added
+     */
     public void addMedication(Medication medication) {
         if (medication == null) {
             System.out.println("Cannot add null medication.");
@@ -49,7 +55,14 @@ public class MedicationSystem {
         System.out.println("Added medication: " + medication.getName());
     }
 
-    // Overload: Add by details (used for Scanner input later)
+    /*
+     * Overload: add medication by details
+     * @param id the ID of the medication
+     * @param name the name of the medication
+     * @param dosage the dosage of the medication
+     * @param quantity the quantity in stock
+     * @param expiryDate the expiry date of the medication
+     */
     public void addMedication(String id, String name, String dosage, int quantity, LocalDate expiryDate) {
         if (id == null || name == null || dosage == null || expiryDate == null) {
             System.out.println("Invalid medication details provided.");
@@ -60,7 +73,10 @@ public class MedicationSystem {
         addMedication(newMed); // Delegate to main method
     }
 
-    // Optional: Add by ID or name (could later load a predefined template)
+    /*
+     * Overload: add medication by identifier only
+     * @param identifier the identifier (ID or name) of the medication
+     */
     public void addMedication(String identifier) {
         if (identifier == null || identifier.isEmpty()) {
             System.out.println("Invalid identifier.");
@@ -71,7 +87,10 @@ public class MedicationSystem {
         System.out.println("Feature not implemented yet: add medication by identifier only (" + identifier + ")");
     }
 
-    // Display all medications
+    /*
+     * Method to view all medications in the system.
+     * Prints the list of medications to the console.
+     */
     public void viewMedications() {
         System.out.println("\n--- Medication List ---");
         if (medications.isEmpty()) {
@@ -83,7 +102,10 @@ public class MedicationSystem {
         }
     }
 
-    // Remove by identifier (ID or name)
+    /*
+     * Method to remove a medication from the system by ID or name.
+     * @param identifier the ID or name of the medication to be removed
+     */
     public void removeMedication(String identifier) {
         if (identifier == null || identifier.isEmpty()) {
             System.out.println("Invalid medication identifier.");
@@ -102,7 +124,10 @@ public class MedicationSystem {
         System.out.println("No medication found with ID or name: " + identifier);
     }
 
-    // Overload: remove by Medication object
+    /*
+     * Overload: remove medication by Medication object
+     * @param medication the Medication object to be removed
+     */
     public void removeMedication(Medication medication) {
         if (medication == null) {
             System.out.println("Invalid medication reference.");
@@ -111,7 +136,14 @@ public class MedicationSystem {
         removeMedication(medication.getID());
     }
 
-    // Edit by identifier or name
+    /*
+     * Method to edit a medication's details by ID or name.
+     * @param identifier the ID or name of the medication to be edited
+     * @param newName the new name of the medication (null to keep unchanged)
+     * @param newDosage the new dosage of the medication (null to keep unchanged)
+     * @param newQuantity the new quantity in stock (null to keep unchanged)
+     * @param newExpiryDate the new expiry date (null to keep unchanged)
+     */
     public void editMedication(String identifier, String newName, String newDosage, Integer newQuantity, LocalDate newExpiryDate) {
         if (identifier == null || identifier.isEmpty()) {
             System.out.println("Invalid medication identifier.");
@@ -149,7 +181,14 @@ public class MedicationSystem {
         System.out.println("No medication found with ID or name: " + identifier);
     }
 
-    // Overload: edit by Medication object
+    /*
+     * Overload: edit medication by Medication object
+     * @param medication the Medication object to be edited
+     * @param newName the new name of the medication (null to keep unchanged)
+     * @param newDosage the new dosage of the medication (null to keep unchanged)
+     * @param newQuantity the new quantity in stock (null to keep unchanged)
+     * @param newExpiryDate the new expiry date (null to keep unchanged)
+     */
     public void editMedication(Medication medication, String newName, String newDosage, Integer newQuantity, LocalDate newExpiryDate) {
         if (medication == null) {
             System.out.println("Invalid medication reference.");
@@ -158,7 +197,11 @@ public class MedicationSystem {
         editMedication(medication.getID(), newName, newDosage, newQuantity, newExpiryDate);
     }
 
-    // Search across Medications, Patients, and Doctors by name
+    /*
+     * Method to search for medications, patients, and doctors by a keyword.
+     * @param keyword the search keyword
+     * Prints matching records to the console.
+     */
     public void searchAll(String keyword) {
         boolean found = false;
 
@@ -192,7 +235,10 @@ public class MedicationSystem {
         }
     }
 
-    // Add patient
+    /*
+     * Add patient
+     * @param patient the Patient object to be added
+     */
     public void addPatient(Patient patient) {
         if (patient != null) {
             patients.add(patient);
@@ -200,7 +246,10 @@ public class MedicationSystem {
         }
     }
     
-    // Add doctor
+    /*
+    * Add doctor
+    * @param doctor the Doctor object to be added
+    */
     public void addDoctor(Doctor doctor) {
         if (doctor != null) {
             doctors.add(doctor);
@@ -208,7 +257,11 @@ public class MedicationSystem {
         }
     }
 
-    // Add patient to doctor's list by names
+    /*
+     * Assign patient to doctor
+     * @param doctorName the name of the doctor
+     * @param patientName the name of the patient
+     */
     public void addPatientToDoctor(String doctorName, String patientName) {
         Doctor doctor = null;
         Patient patient = null;
@@ -234,7 +287,16 @@ public class MedicationSystem {
         }
     }
 
-    // Accepts a prescription
+    /*
+     * Method to accept a prescription.
+     * @param patientName the name of the patient
+     * @param doctorName the name of the doctor
+     * @param medicationID the ID of the medication
+     * @param dosage the dosage of the medication
+     * @param prescribedQuantity the quantity prescribed
+     * Creates a new Prescription object and updates medication stock.
+     * Prints confirmation to the console.
+     */
     public void acceptPrescription(String patientName, String doctorName, String medicationID, String dosage, int prescribedQuantity) {
         // Find patient
         Patient patient = null;
@@ -293,7 +355,10 @@ public class MedicationSystem {
                 " (Dosage: " + dosage + ", Quantity: " + prescribedQuantity + ").");
     }
 
-    // Method to check and list expired medications 
+    /*
+     * Method to check for expired medications in the system.
+     * Prints expired medications to the console.
+     */
      public void checkExpiredMedications() {
         System.out.println("\n--- Checking for Expired Medications ---");
         boolean foundExpired = false;
@@ -312,7 +377,11 @@ public class MedicationSystem {
         }
     }
 
-    // Method to restock functionality (random or specific number)
+    /*
+     * Method to restock medications in the system.
+     * @param amount the amount to restock each medication (if <=0, random amount between 5-25)
+     * Updates medication stock and prints new totals to the console.
+     */
     public void restockMedications(int amount) {
         System.out.println("\n--- Restocking Medications ---");
         Random rand = new Random();
@@ -326,7 +395,11 @@ public class MedicationSystem {
         }
     }
 
-    // Connect MedicationSystem to Prescription and Patient classes
+    /*
+     * Method to link prescriptions to their respective patients.
+     * Updates each patient's prescription list.
+     * Prints the number of linked prescriptions to the console.
+     */
     public void linkPrescriptionsToPatients() {
         System.out.println("\n--- Linking Prescriptions to Patients ---");
         int linkedCount = 0;
@@ -342,7 +415,10 @@ public class MedicationSystem {
         System.out.println("Linked " + linkedCount + " prescriptions to patients.");
     }
 
-    // Method Prints a list of all prescription’s issued by a specific doctor.
+    /*
+    * Method Prints a list of all prescription’s issued by a specific doctor.
+    * @param doctorName the name of the doctor
+    */
     public void printPrescriptionsByDoctor(String doctorName) {
         boolean found = false;
     
@@ -359,7 +435,14 @@ public class MedicationSystem {
         }
     }
 
-    // Edit patients
+    /*
+     * Edit patients
+     * @param oldName the current name of the patient to be edited
+     * @param name the new name of the patient (null to keep unchanged)
+     * @param age the new age of the patient (null to keep unchanged)
+     * @param phoneNumber the new phone number of the patient (null to keep unchanged)
+     * Updates patient details and prints confirmation to the console.
+     */
     public void editPatients(String oldName, String name, Integer age, String phoneNumber) {
         for (Patient p : patients) {
             if (p.getName().equalsIgnoreCase(oldName)) {
@@ -392,7 +475,14 @@ public class MedicationSystem {
         System.out.println("No patient found with name: " + oldName);
     }
 
-    // Overload: Edit patient by Patient object
+    /*
+     * Overload: Edit patient by patient object
+     * @param patient the Patient object to be edited
+     * @param name the new name of the patient (null to keep unchanged)
+     * @param age the new age of the patient (null to keep unchanged)
+     * @param phoneNumber the new phone number of the patient (null to keep unchanged)
+     * Updates patient details and prints confirmation to the console.
+     */
     public void editPatients(Patient patient, String name, Integer age, String phoneNumber) {
         if (patient == null) {
             System.out.println("Invalid patient reference.");
@@ -401,7 +491,11 @@ public class MedicationSystem {
         editPatients(patient.getName(), name, age, phoneNumber);
     }
 
-    // Delete patients (ID or name)
+    /*
+     * Delete patients (ID or name)
+     * @param identifier the ID or name of the patient to be removed
+     * Returns the removed Patient object, or null if not found.
+     */
     public Patient removePatient(String identifier) {
         if (identifier == null || identifier.isEmpty()) {
             System.out.println("Invalid patient identifier.");
@@ -421,7 +515,10 @@ public class MedicationSystem {
         return null;
     }
 
-    // Overload: remove by Patient object
+    /*
+    * Overload: remove by Patient object
+    * @param patient the Patient object to be removed
+    */
     public void removePatient(Patient patient) {
         if (patient == null) {
             System.out.println("Invalid patient reference.");
@@ -430,7 +527,15 @@ public class MedicationSystem {
         removePatient(String.valueOf(patient.getID()));
     }
 
-    // Edit doctors
+    /*
+     * Edit doctors
+     * @param oldName the current name of the doctor to be edited
+     * @param name the new name of the doctor (null to keep unchanged)
+     * @param age the new age of the doctor (null to keep unchanged)
+     * @param phoneNumber the new phone number of the doctor (null to keep unchanged)
+     * @param specialization the new specialization of the doctor (null to keep unchanged)
+     * Updates doctor details and prints confirmation to the console.
+     */
     public void editDoctors(String oldName, String name, Integer age, String phoneNumber, String specialization) {
         for (Doctor d : doctors) {
             if (d.getName().equalsIgnoreCase(oldName)) {
@@ -468,7 +573,15 @@ public class MedicationSystem {
         System.out.println("No doctor found with name: " + oldName);
     }
 
-     // Overload: Edit doctor by doctor object
+    /*
+     * Overload: Edit doctor by doctor object
+     * @param doctor the Doctor object to be edited
+     * @param name the new name of the doctor (null to keep unchanged)
+     * @param age the new age of the doctor (null to keep unchanged)
+     * @param phoneNumber the new phone number of the doctor (null to keep unchanged)
+     * @param specialization the new specialization of the doctor (null to keep unchanged)
+     * Updates doctor details and prints confirmation to the console.
+     */
     public void editDoctors(Doctor doctor, String name, Integer age, String phoneNumber, String specialization) {
         if (doctor == null) {
             System.out.println("Invalid doctor reference.");
@@ -477,7 +590,11 @@ public class MedicationSystem {
         editDoctors(doctor.getName(), name, age, phoneNumber, specialization);
     }
 
-    // Delete doctors (ID or name)
+    /*
+     * Delete doctors (ID or name)
+     * @param identifier the ID or name of the doctor to be removed
+     * Returns the removed Doctor object, or null if not found.
+     */
     public Doctor removeDoctor(String identifier) {
         if (identifier == null || identifier.isEmpty()) {
             System.out.println("Invalid doctor identifier.");
@@ -497,7 +614,10 @@ public class MedicationSystem {
         return null;
     }
 
-    // Overload: remove by Doctor object
+    /*
+     * Overload: remove by Doctor object
+     * @param doctor the Doctor object to be removed
+     */
     public void removeDoctor(Doctor doctor) {
         if (doctor == null) {
             System.out.println("Invalid doctor reference.");
@@ -506,7 +626,9 @@ public class MedicationSystem {
         removeDoctor(String.valueOf(doctor.getID()));
     }
 
-    // Generate medication report for all stored medications
+    /*
+    * Generate a report of all medications, highlighting expired ones.
+    */
     public void generateMedicationReport() {
         System.out.println("\n--- Medication Report ---");
 
@@ -531,7 +653,9 @@ public class MedicationSystem {
         }
     }
 
-    // Generate a report containing all system data, including drugs, patients, doctors, and prescriptions.
+    /*
+    * Generate a report containing all system data, including drugs, patients, doctors, and prescriptions.
+    */ 
     public void generateFullSystemReport() {
         System.out.println("\n=== FULL SYSTEM REPORT ===");
 
@@ -625,8 +749,9 @@ public class MedicationSystem {
         System.out.println();
     }
 
-
-    // Generate a report of all the patients' prescriptions for the past year
+    /* 
+    * Generate a report of all the patients' prescriptions for the past year
+    */
     public void generateAnnualPrescriptionSummary() {
         System.out.println("\n--- Annual Prescription Summary ---");
         LocalDate oneYearAgo = LocalDate.now().minusYears(1);
