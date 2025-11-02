@@ -1,5 +1,9 @@
 import java.time.LocalDate;
 
+/*
+ * Test file of the model class representing a medication in the pharmacy system.
+ * Stores medication properties (id, name, dose, quantityInStock, expiryDate).
+ */
 public class MedicationTest {
     public static void main(String[] args) {
         // Test medication 

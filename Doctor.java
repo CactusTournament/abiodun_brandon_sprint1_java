@@ -14,24 +14,37 @@ public class Doctor extends Person {
     private String specialization;
     private List<Patient> patients;
 
-    // Constructor
+    /*
+     * Constructor for the Doctor class.
+     * Initializes the doctor with an ID, name, age, phone number, and specialization.
+     * Also initializes an empty list of patients.
+     */
     public Doctor(int ID, String name, int age, String phoneNumber, String specialization) {
         super(ID, name, age, phoneNumber);
         this.specialization = specialization;
         this.patients = new ArrayList<>();
     }
 
-    // Getter for specialization
+    /*
+     * Getter for specialization
+     * @return specialization of the doctor
+     */
     public String getSpecialization() {
         return specialization;
     }
 
-    // Setter for specialization
+    /*
+     * Setter for specialization
+     * @param specialization new specialization of the doctor
+     */
     public void setSpecialization(String specialization) {
         this.specialization = specialization;
     }
 
-    // Manage patients
+    /*
+     * Method to add a patient to the doctor's list of patients.
+     * @param patient the patient to be added
+     */
     public void addPatient(Patient patient) {
         if (!patients.contains(patient)) {
             patients.add(patient);
@@ -41,14 +54,26 @@ public class Doctor extends Person {
         }
     }
 
+    /*
+     * Method to remove a patient from the doctor's list of patients.
+     * @param patient the patient to be removed
+     */
     public void removePatient(Patient patient) {
         patients.remove(patient);
     }
 
+    /*
+     * Getter for the list of patients
+     * @return list of patients assigned to the doctor
+     */
     public List<Patient> getPatients() {
         return patients;
     }
 
+    /*
+     * Overridden toString method to provide a string representation of the Doctor object.
+     * @return string representation of the Doctor
+     */
     @Override
     public String toString() {
         return "Doctor{" +

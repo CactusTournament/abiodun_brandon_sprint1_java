@@ -70,6 +70,12 @@ public class Menu {
         scanner.close();
     }
 
+    /*
+     * Helper method to get a validated integer input from the user.
+     * @param scanner the Scanner object for input
+     * @param prompt the prompt message to display
+     * @return the validated integer input
+     */
     private static int getValidatedInt(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -88,6 +94,12 @@ public class Menu {
         }
     }
 
+    /*
+     * Helper method to get a validated non-empty string input from the user.
+     * @param scanner the Scanner object for input
+     * @param prompt the prompt message to display
+     * @return the validated string input
+     */
     private static String getValidatedString(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -98,6 +110,11 @@ public class Menu {
         }
     }
 
+    /*
+     * Restock medications in the pharmacy.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void restockMedications(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Restock Pharmacy Drugs ---");
         String identifier = getValidatedString(scanner, "Enter Medication ID to Restock: ");
@@ -108,12 +125,22 @@ public class Menu {
         System.out.println("\n");
     }
 
+    /*
+     * Print annual prescription report for all patients.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void printAllPatientsAnnualPrescriptionReport(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Annual Report For All Patients Prescriptions---");
         system.generateAnnualPrescriptionSummary();
         System.out.println("\n");
     }
 
+    /*
+     * Print all prescriptions for a specific doctor.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */ 
     private static void printPrescriptionsForSpecificDoctor(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Print All Prescriptions For A Specific Doctor ---");
         String doctorName = getValidatedString(scanner, "Enter Doctor's Name: ");
@@ -122,18 +149,33 @@ public class Menu {
         System.out.println("\n");
     }
 
+    /*
+     * Check for expired medications in the pharmacy.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void checkExpiredMeds(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Check For Expired Medications ---");
         system.checkExpiredMedications();
         System.out.println("\n");
     }
 
+    /*
+     * Generate a full system report.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void generateFullSystemReport(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Generate Full System Report ---");
         system.generateFullSystemReport();
         System.out.println("\n");
     }
 
+    /*
+     * Assign a patient to a doctor.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void addPatientToDoctor(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Assign A Patient To A Doctor ---");
         String doctorName = getValidatedString(scanner, "Enter Doctor's Name: ");
@@ -144,6 +186,11 @@ public class Menu {
         System.out.println("\n");
     }
 
+    /*
+     * Accept a prescription into the system.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void acceptPrescription(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Accept A Prescription ---");
         String patientName = getValidatedString(scanner, "Enter Patient Name: ");
@@ -160,6 +207,11 @@ public class Menu {
         System.out.println("\n");
     }
 
+    /*
+     * Search for a medication, doctor, or patient by name.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void searchMedicationDoctorPatient(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Search For A Medication, Doctor, Or Patient By Name ---");
         String name = getValidatedString(scanner, "Enter Medication, Doctor or Patient's Name To Search: ");
@@ -168,6 +220,11 @@ public class Menu {
         System.out.println("\n");
     }
 
+    /*
+     * Edit a medication's information.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void editAMedication(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Edit A Medication's Information ---");
         String identifier = getValidatedString(scanner, "Enter Medication ID or Name to Edit: ");
@@ -199,6 +256,11 @@ public class Menu {
         System.out.println("\n");
     }
 
+    /*
+     * Edit a doctor's information.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void editADoctor(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Edit A Doctor's Information ---");
         String identifier = getValidatedString(scanner, "Enter Doctor's Name to Edit: ");
@@ -217,6 +279,11 @@ public class Menu {
         System.out.println("\n");
     }
 
+    /*
+     * Edit a patient's information.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void editAPatient(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Edit A Patient's Information ---");
         String identifier = getValidatedString(scanner, "Enter Patient Name to Edit: ");
@@ -233,6 +300,11 @@ public class Menu {
         System.out.println("\n");
     }
 
+    /*
+     * Delete a medication from the pharmacy.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void deleteAMedication(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Delete A Medication From The Pharmacy ---");
         String identifier = getValidatedString(scanner, "Enter Medication ID or Name to Delete: ");
@@ -241,6 +313,11 @@ public class Menu {
         System.out.println("\n");
     }
 
+    /*
+     * Delete a doctor from the system.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void deleteADoctor(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Delete a Doctor From The System ---");
         String identifier = getValidatedString(scanner, "Enter Doctor ID or Name to Delete: ");
@@ -249,6 +326,11 @@ public class Menu {
         System.out.println("\n");
     }
 
+    /*
+     * Delete a patient from the system.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void deleteAPatient(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Delete A Patient From The System ---");
         String identifier = getValidatedString(scanner, "Enter Patient ID or Name to Delete: ");
@@ -257,6 +339,11 @@ public class Menu {
         System.out.println("\n");
     }
 
+    /*
+     * Add a new medication to the pharmacy.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void addNewMedicationToPharmacy(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Add A New Medication To The Pharmacy ---");
         String id = getValidatedString(scanner, "Enter Medication ID: ");
@@ -297,6 +384,11 @@ public class Menu {
         System.out.println("\n");
     }
 
+    /*
+     * Add a new doctor to the system.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void addANewDoctor(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Add a New Doctor ---");
         int id = getValidatedInt(scanner, "Enter Doctor ID: ");
@@ -335,6 +427,11 @@ public class Menu {
         System.out.println("\n");
     }
 
+    /*
+     * Add a new patient to the system.
+     * @param scanner the Scanner object for input
+     * @param system the MedicationSystem object
+     */
     private static void addANewPatient(Scanner scanner, MedicationSystem system) {
         System.out.println("\n--- Add a New Patient ---");
         int id = getValidatedInt(scanner, "Enter Patient ID: ");

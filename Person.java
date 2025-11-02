@@ -12,7 +12,10 @@ public class Person {
     private int age;
     private String phoneNumber;
 
-    // Constructor
+    /*
+    * Constructor for the Person class.
+    * Initializes the person with an ID, name, age, and phone number.
+    */
     public Person(int ID, String name, int age, String phoneNumber) {
         this.ID = ID;
         this.name = name;
@@ -20,28 +23,50 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
 
-    // Getters
+    /*
+     * Getter for ID
+     * @return ID of the person
+     */
     public int getID() {
         return ID;
     }
 
+    /*
+     * Getter for name
+     * @return name of the person
+     */
     public String getName() {
         return name;
     }
 
+    /*
+     * Getter for age
+     * @return age of the person
+     */
     public int getAge() {
         return age;
     }
 
+    /*
+     * Getter for phone number
+     * @return phone number of the person
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    // Setters
+    /*
+     * Setters for name properties
+     * @param name        new name of the person
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /*
+     * Setter for age
+     * @param age new age of the person
+     */
     public void setAge(int age) {
         if (age < 0) {
             throw new IllegalArgumentException("Age cannot be negative.");
@@ -50,11 +75,18 @@ public class Person {
         }
     }
 
+    /*
+     * Setter for phone number
+     * @param phoneNumber new phone number of the person
+     */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    // toString method
+    /*
+     * Overrides the toString method to provide a string representation of the person.
+     * @return string representation of the person
+     */
     @Override
     public String toString() {
         return "Person{" +

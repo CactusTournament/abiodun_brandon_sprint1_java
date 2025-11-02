@@ -7,6 +7,7 @@
 
 public class DoctorTest {
     public static void main(String[] args) {
+        
         // Create a doctor
         Doctor doctor = new Doctor(1, "Dr. Smith", 45, "555-8765", "General Practitioner");
 
