@@ -17,7 +17,7 @@ public class Medication {
     private int quantityInStock;
     private LocalDate expiryDate;
 
-    /*
+    /**
      * Constructor for the Medication class.
      * Initializes the medication with an ID, name, dose, quantity in stock, and expiry date.
      */
@@ -29,54 +29,62 @@ public class Medication {
         this.expiryDate = expiryDate;
     }
 
-    /*
+    /**
      * Getter for the ID of the medication.
      * @return the ID of the medication
      */
     public String getID() { return id; }
 
-    /*
+    /**
      * Sets the ID of the medication.
      * @param id the new ID of the medication
      */
     public void setID(String id) { this.id = id; }
 
-    /*
-     * Getters and Setters for Medication properties.
+    /**
+     * Gets the name of the medication.
+     * @return the name of the medication
      */
     public String getName() { return name; }
 
-    /* Sets the name of the medication.
+    /**
+     * Sets the name of the medication.
      * @param name the new name of the medication
      */
     public void setName(String name) { this.name = name; }
 
-    /* Getter for the dose of the medication.
+    /**
+     * Getter for the dose of the medication.
      * @return the dose of the medication
      */
     public String getDose() { return dose; }
 
-    /* Sets the dose of the medication.
+    /**
+     * Sets the dose of the medication.
      * @param dose the new dose of the medication
      */
     public void setDose(String dose) { this.dose = dose; }
 
-    /* Getter for the quantity in stock of the medication.
+    /**
+     * Getter for the quantity in stock of the medication.
      * @return the quantity in stock of the medication
      */
     public int getQuantityInStock() { return quantityInStock; }
 
-    /* Sets the quantity in stock of the medication.
+    /**
+     * Sets the quantity in stock of the medication.
      * @param quantityInStock the new quantity in stock of the medication
      */
     public void setQuantityInStock(int quantityInStock) { this.quantityInStock = quantityInStock; }
 
-    /* Getter for the expiry date of the medication.
+    /**
+     * Getter for the expiry date of the medication.
      * @return the expiry date of the medication
      */
     public LocalDate getExpiryDate() { return expiryDate; }
 
-    /* Sets the expiry date of the medication.
+    /**
+     * Sets the expiry date of the medication.
      * @param expiryDate the new expiry date of the medication
      */
     public void setExpiryDate(LocalDate expiryDate) { this.expiryDate = expiryDate; }

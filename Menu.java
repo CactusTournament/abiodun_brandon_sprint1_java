@@ -11,6 +11,10 @@ import java.util.Scanner;
 
 public class Menu {
 
+    /**
+     * Main method to run the pharmacy medication tracking system.
+     * @param args
+     */
     public static void main(String[] args) {
         MedicationSystem system = new MedicationSystem();
         boolean exit = false;
@@ -70,7 +74,7 @@ public class Menu {
         scanner.close();
     }
 
-    /*
+    /**
      * Helper method to get a validated integer input from the user.
      * @param scanner the Scanner object for input
      * @param prompt the prompt message to display
@@ -94,7 +98,7 @@ public class Menu {
         }
     }
 
-    /*
+    /**
      * Helper method to get a validated non-empty string input from the user.
      * @param scanner the Scanner object for input
      * @param prompt the prompt message to display
@@ -110,7 +114,7 @@ public class Menu {
         }
     }
 
-    /*
+    /**
      * Restock medications in the pharmacy.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -125,7 +129,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Print annual prescription report for all patients.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -136,7 +140,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Print all prescriptions for a specific doctor.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -149,7 +153,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Check for expired medications in the pharmacy.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -160,7 +164,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Generate a full system report.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -171,7 +175,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Assign a patient to a doctor.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -186,7 +190,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Accept a prescription into the system.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -207,7 +211,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Search for a medication, doctor, or patient by name.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -220,7 +224,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Edit a medication's information.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -256,7 +260,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Edit a doctor's information.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -279,7 +283,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Edit a patient's information.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -300,7 +304,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Delete a medication from the pharmacy.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -313,7 +317,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Delete a doctor from the system.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -326,7 +330,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Delete a patient from the system.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -339,7 +343,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Add a new medication to the pharmacy.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -384,7 +388,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Add a new doctor to the system.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object
@@ -427,7 +431,7 @@ public class Menu {
         System.out.println("\n");
     }
 
-    /*
+    /**
      * Add a new patient to the system.
      * @param scanner the Scanner object for input
      * @param system the MedicationSystem object

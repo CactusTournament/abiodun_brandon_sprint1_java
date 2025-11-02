@@ -12,7 +12,7 @@ public class Person {
     private int age;
     private String phoneNumber;
 
-    /*
+    /**
     * Constructor for the Person class.
     * Initializes the person with an ID, name, age, and phone number.
     */
@@ -23,7 +23,7 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
 
-    /*
+    /**
      * Getter for ID
      * @return ID of the person
      */
@@ -31,7 +31,7 @@ public class Person {
         return ID;
     }
 
-    /*
+    /**
      * Getter for name
      * @return name of the person
      */
@@ -39,7 +39,7 @@ public class Person {
         return name;
     }
 
-    /*
+    /**
      * Getter for age
      * @return age of the person
      */
@@ -47,7 +47,7 @@ public class Person {
         return age;
     }
 
-    /*
+    /**
      * Getter for phone number
      * @return phone number of the person
      */
@@ -55,7 +55,7 @@ public class Person {
         return phoneNumber;
     }
 
-    /*
+    /**
      * Setters for name properties
      * @param name        new name of the person
      */
@@ -63,7 +63,7 @@ public class Person {
         this.name = name;
     }
 
-    /*
+    /**
      * Setter for age
      * @param age new age of the person
      */
@@ -75,7 +75,7 @@ public class Person {
         }
     }
 
-    /*
+    /**
      * Setter for phone number
      * @param phoneNumber new phone number of the person
      */
