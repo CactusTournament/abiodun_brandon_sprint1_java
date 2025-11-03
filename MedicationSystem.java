@@ -21,7 +21,7 @@ public class MedicationSystem {
     private final List<Prescription> prescriptions;
     private ChronoLocalDate today;
 
-    /*
+    /**
      * Constructor for the MedicationSystem class.
      * Initializes empty lists for medications, patients, doctors, and prescriptions.
      */
@@ -33,7 +33,7 @@ public class MedicationSystem {
     }
 
 
-    /*
+    /**
      * Method to add a medication to the system.
      * @param medication the Medication object to be added
      */
@@ -55,7 +55,7 @@ public class MedicationSystem {
         System.out.println("Added medication: " + medication.getName());
     }
 
-    /*
+    /**
      * Overload: add medication by details
      * @param id the ID of the medication
      * @param name the name of the medication
@@ -73,7 +73,7 @@ public class MedicationSystem {
         addMedication(newMed); // Delegate to main method
     }
 
-    /*
+    /**
      * Overload: add medication by identifier only
      * @param identifier the identifier (ID or name) of the medication
      */
@@ -87,7 +87,7 @@ public class MedicationSystem {
         System.out.println("Feature not implemented yet: add medication by identifier only (" + identifier + ")");
     }
 
-    /*
+    /**
      * Method to view all medications in the system.
      * Prints the list of medications to the console.
      */
@@ -102,7 +102,7 @@ public class MedicationSystem {
         }
     }
 
-    /*
+    /**
      * Method to remove a medication from the system by ID or name.
      * @param identifier the ID or name of the medication to be removed
      */
@@ -124,7 +124,7 @@ public class MedicationSystem {
         System.out.println("No medication found with ID or name: " + identifier);
     }
 
-    /*
+    /**
      * Overload: remove medication by Medication object
      * @param medication the Medication object to be removed
      */
@@ -136,7 +136,7 @@ public class MedicationSystem {
         removeMedication(medication.getID());
     }
 
-    /*
+    /**
      * Method to edit a medication's details by ID or name.
      * @param identifier the ID or name of the medication to be edited
      * @param newName the new name of the medication (null to keep unchanged)
@@ -181,7 +181,7 @@ public class MedicationSystem {
         System.out.println("No medication found with ID or name: " + identifier);
     }
 
-    /*
+    /**
      * Overload: edit medication by Medication object
      * @param medication the Medication object to be edited
      * @param newName the new name of the medication (null to keep unchanged)
@@ -197,7 +197,7 @@ public class MedicationSystem {
         editMedication(medication.getID(), newName, newDosage, newQuantity, newExpiryDate);
     }
 
-    /*
+    /**
      * Method to search for medications, patients, and doctors by a keyword.
      * @param keyword the search keyword
      * Prints matching records to the console.
@@ -235,7 +235,7 @@ public class MedicationSystem {
         }
     }
 
-    /*
+    /**
      * Add patient
      * @param patient the Patient object to be added
      */
@@ -246,7 +246,7 @@ public class MedicationSystem {
         }
     }
     
-    /*
+    /**
     * Add doctor
     * @param doctor the Doctor object to be added
     */
@@ -257,7 +257,7 @@ public class MedicationSystem {
         }
     }
 
-    /*
+    /**
      * Assign patient to doctor
      * @param doctorName the name of the doctor
      * @param patientName the name of the patient
@@ -287,7 +287,7 @@ public class MedicationSystem {
         }
     }
 
-    /*
+    /**
      * Method to accept a prescription.
      * @param patientName the name of the patient
      * @param doctorName the name of the doctor
@@ -355,7 +355,7 @@ public class MedicationSystem {
                 " (Dosage: " + dosage + ", Quantity: " + prescribedQuantity + ").");
     }
 
-    /*
+    /**
      * Method to check for expired medications in the system.
      * Prints expired medications to the console.
      */
@@ -377,9 +377,9 @@ public class MedicationSystem {
         }
     }
 
-    /*
+    /**
      * Method to restock medications in the system.
-     * @param amount the amount to restock each medication (if <=0, random amount between 5-25)
+     * @param amount the amount to restock each medication 
      * Updates medication stock and prints new totals to the console.
      */
     public void restockMedications(int amount) {
@@ -395,7 +395,7 @@ public class MedicationSystem {
         }
     }
 
-    /*
+    /**
      * Method to link prescriptions to their respective patients.
      * Updates each patient's prescription list.
      * Prints the number of linked prescriptions to the console.
@@ -415,7 +415,7 @@ public class MedicationSystem {
         System.out.println("Linked " + linkedCount + " prescriptions to patients.");
     }
 
-    /*
+    /**
     * Method Prints a list of all prescription’s issued by a specific doctor.
     * @param doctorName the name of the doctor
     */
@@ -435,7 +435,7 @@ public class MedicationSystem {
         }
     }
 
-    /*
+    /**
      * Edit patients
      * @param oldName the current name of the patient to be edited
      * @param name the new name of the patient (null to keep unchanged)
@@ -475,7 +475,7 @@ public class MedicationSystem {
         System.out.println("No patient found with name: " + oldName);
     }
 
-    /*
+    /**
      * Overload: Edit patient by patient object
      * @param patient the Patient object to be edited
      * @param name the new name of the patient (null to keep unchanged)
@@ -491,10 +491,10 @@ public class MedicationSystem {
         editPatients(patient.getName(), name, age, phoneNumber);
     }
 
-    /*
+    /**
      * Delete patients (ID or name)
      * @param identifier the ID or name of the patient to be removed
-     * Returns the removed Patient object, or null if not found.
+     * @return returns the removed Patient object, or null if not found.
      */
     public Patient removePatient(String identifier) {
         if (identifier == null || identifier.isEmpty()) {
@@ -515,7 +515,7 @@ public class MedicationSystem {
         return null;
     }
 
-    /*
+    /**
     * Overload: remove by Patient object
     * @param patient the Patient object to be removed
     */
@@ -527,7 +527,7 @@ public class MedicationSystem {
         removePatient(String.valueOf(patient.getID()));
     }
 
-    /*
+    /**
      * Edit doctors
      * @param oldName the current name of the doctor to be edited
      * @param name the new name of the doctor (null to keep unchanged)
@@ -573,7 +573,7 @@ public class MedicationSystem {
         System.out.println("No doctor found with name: " + oldName);
     }
 
-    /*
+    /**
      * Overload: Edit doctor by doctor object
      * @param doctor the Doctor object to be edited
      * @param name the new name of the doctor (null to keep unchanged)
@@ -590,10 +590,10 @@ public class MedicationSystem {
         editDoctors(doctor.getName(), name, age, phoneNumber, specialization);
     }
 
-    /*
+    /**
      * Delete doctors (ID or name)
      * @param identifier the ID or name of the doctor to be removed
-     * Returns the removed Doctor object, or null if not found.
+     * @return Returns the removed Doctor object, or null if not found.
      */
     public Doctor removeDoctor(String identifier) {
         if (identifier == null || identifier.isEmpty()) {
@@ -614,7 +614,7 @@ public class MedicationSystem {
         return null;
     }
 
-    /*
+    /**
      * Overload: remove by Doctor object
      * @param doctor the Doctor object to be removed
      */
@@ -626,7 +626,7 @@ public class MedicationSystem {
         removeDoctor(String.valueOf(doctor.getID()));
     }
 
-    /*
+    /**
     * Generate a report of all medications, highlighting expired ones.
     */
     public void generateMedicationReport() {
@@ -653,7 +653,7 @@ public class MedicationSystem {
         }
     }
 
-    /*
+    /**
     * Generate a report containing all system data, including drugs, patients, doctors, and prescriptions.
     */ 
     public void generateFullSystemReport() {
@@ -749,7 +749,7 @@ public class MedicationSystem {
         System.out.println();
     }
 
-    /* 
+    /**
     * Generate a report of all the patients' prescriptions for the past year
     */
     public void generateAnnualPrescriptionSummary() {

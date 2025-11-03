@@ -54,7 +54,7 @@ public class Patient extends Person {
 
     /**
     * Getter for prescriptions
-    * Returns a list of all prescriptions for this patient.
+    * @return Returns a list of all prescriptions for this patient.
     */
     public List<Prescription> getPrescriptions() {
         return prescriptions;
@@ -74,7 +74,7 @@ public class Patient extends Person {
         }
     }
 
-    /*
+    /**
      * Overrides the toString method to provide a string representation of the patient.
      * @return string representation of the patient
      */

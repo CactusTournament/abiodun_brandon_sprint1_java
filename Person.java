@@ -1,4 +1,4 @@
-/*
+/**
  * This class represents a Person with attributes such as ID, name, age, and phone number.
  * It provides constructors, getters, setters, and a toString method for easy representation.
  * 
@@ -15,6 +15,10 @@ public class Person {
     /**
     * Constructor for the Person class.
     * Initializes the person with an ID, name, age, and phone number.
+    * @param ID          Unique identifier for the person
+    * @param name        Name of the person
+    * @param age         Age of the person
+    * @param phoneNumber Phone number of the person
     */
     public Person(int ID, String name, int age, String phoneNumber) {
         this.ID = ID;
@@ -83,7 +87,7 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
 
-    /*
+    /**
      * Overrides the toString method to provide a string representation of the person.
      * @return string representation of the person
      */

@@ -18,6 +18,11 @@ public class Doctor extends Person {
      * Constructor for the Doctor class.
      * Initializes the doctor with an ID, name, age, phone number, and specialization.
      * Also initializes an empty list of patients.
+     * @param ID            Unique identifier for the doctor
+     * @param name          Name of the doctor
+     * @param age           Age of the doctor
+     * @param phoneNumber   Phone number of the doctor
+     * @param specialization Specialization of the doctor
      */
     public Doctor(int ID, String name, int age, String phoneNumber, String specialization) {
         super(ID, name, age, phoneNumber);

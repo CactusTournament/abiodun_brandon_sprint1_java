@@ -24,6 +24,11 @@ public class Prescription {
      * Constructor for the Prescription class.
      * Initializes the prescription with a medication, patient, doctor, dosage, and prescribed quantity.
      * Sets the prescription expiry date to one year from the current date.
+     * @param patient            The patient for whom the prescription is made
+     * @param doctor             The doctor who prescribed the medication
+     * @param medication        The medication being prescribed
+     * @param dosage             The dosage instructions for the medication
+     * @param prescribedQuantity The quantity of medication prescribed
      */
     public Prescription(Patient patient, Doctor doctor, Medication medication, String dosage, int prescribedQuantity) {
         this.prescriptionID = nextID++;

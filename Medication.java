@@ -20,6 +20,11 @@ public class Medication {
     /**
      * Constructor for the Medication class.
      * Initializes the medication with an ID, name, dose, quantity in stock, and expiry date.
+     * @param id               Unique identifier for the medication
+     * @param name             Name of the medication
+     * @param dose             Dose of the medication
+     * @param quantityInStock  Quantity of the medication in stock
+     * @param expiryDate      Expiry date of the medication
      */
     public Medication(String id, String name, String dose, int quantityInStock, LocalDate expiryDate) {
         this.id = id;
@@ -89,7 +94,7 @@ public class Medication {
      */
     public void setExpiryDate(LocalDate expiryDate) { this.expiryDate = expiryDate; }
 
-    /*
+    /**
      * Overridden toString method to provide a string representation of the Medication object.
      * @return string representation of the Medication
      */

@@ -1,3 +1,6 @@
+import java.time.LocalDate;
+import java.util.Scanner;
+
 /**
  * Menu for the pharmacy system to manage patient drugs and information.
  * 
@@ -5,10 +8,6 @@
  * Updated by: Brandon Maloney
  * Date: 2024-10-23
  */
-
-import java.time.LocalDate;
-import java.util.Scanner;
-
 public class Menu {
 
     /**

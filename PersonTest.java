@@ -1,4 +1,4 @@
-/*
+/**
  * Handles Person class testing.
  * 
  * Author: Abiodun Magret Oyedele
