@@ -11,8 +11,16 @@ import java.util.Scanner;
 public class Menu {
 
     /**
+     * Default constructor for the Menu class.
+     * Initializes the menu system.
+     */
+    public Menu() {
+        // No specific initialization required for the menu
+    }
+
+    /**
      * Main method to run the pharmacy medication tracking system.
-     * @param args
+     * @param args command line arguments
      */
     public static void main(String[] args) {
         MedicationSystem system = new MedicationSystem();
