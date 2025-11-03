@@ -298,7 +298,7 @@ To ensure that all components of the Pharmacy System work as expected, a set of 
 
 ## 2. DEVELOPMENT DOCUMENTATION
 ### 2.1. Javadocs
-All classes, attributes, and methods in the project are thoroughly documented using Javadoc comments, providing clear explanations of their purpose, functionality, and expected usage. This documentation makes it easier to understand the code structure and maintain the project. The generated Javadoc files are stored in the doc/ folder, which acts as a centralized reference point. Users can navigate this folder to quickly access information about class responsibilities, method parameters and return values, and any important implementation details. This approach enhances code readability, facilitates onboarding of new team members, and ensures consistent documentation practices across the project.
+All classes, attributes, and methods in the project are thoroughly documented using **Javadoc comments**, providing clear explanations of their purpose, functionality, and expected usage. This documentation makes it easier to understand the code structure and maintain the project. The generated Javadoc files are stored in the doc/ folder, which acts as a centralized reference point. Users can navigate this folder to quickly access information about class responsibilities, method parameters and return values, and any important implementation details. This approach enhances code readability, facilitates onboarding of new team members, and ensures consistent documentation practices across the project.
 Example:
 
 ```
@@ -339,6 +339,7 @@ public class Medication {
 ### 2.2 Source Code Directory Structure
 ```
 abiodun_brandon_sprint1_java/
+    |-- doc/
     |-- Doctor.java
     |-- DoctorTest.java
     |-- Medication.java
