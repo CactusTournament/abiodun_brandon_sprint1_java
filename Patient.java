@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/*
+/**
  * Model class representing a patient in the pharmacy system.
  * Stores patient properties (ID, name, age, phoneNumber) 
  * and their list of prescriptions.
@@ -16,7 +16,7 @@ public class Patient extends Person {
     private final int patientID;
     private final List<Prescription> prescriptions; // Added to track prescriptions
 
-    /*
+    /**
      * Constructor for the Patient class.
      * Initializes the patient with an ID, name, age, and phone number.
      * Also initializes an empty list of prescriptions.
@@ -31,7 +31,7 @@ public class Patient extends Person {
         this.prescriptions = new ArrayList<>();
     }
 
-    /*
+    /**
      * Getter for patient ID
      * @return patient ID
      */
@@ -41,7 +41,8 @@ public class Patient extends Person {
 
     // --- Prescription Management ---
 
-    /* Adds a prescription to the patient’s record.
+    /**
+     *  Adds a prescription to the patient’s record.
      * @param pres Prescription to be added
     */
     public void addPrescription(Prescription pres) {
@@ -51,15 +52,15 @@ public class Patient extends Person {
     }
 
 
-    /*
+    /**
     * Getter for prescriptions
-    * Returns a list of all prescriptions for this patient.
+    * @return Returns a list of all prescriptions for this patient.
     */
     public List<Prescription> getPrescriptions() {
         return prescriptions;
     }
 
-    /*
+    /**
     * Prints all prescriptions for this patient.
     */
     public void printPrescriptions() {
@@ -73,7 +74,7 @@ public class Patient extends Person {
         }
     }
 
-    /*
+    /**
      * Overrides the toString method to provide a string representation of the patient.
      * @return string representation of the patient
      */

@@ -1,4 +1,4 @@
-/*
+/**
  * Handles Patient class testing.
  * 
  * Author: Abiodun Magret Oyedele

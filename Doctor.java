@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/*
+/**
  * Model class representing a doctor in the pharmacy system.
  * Stores doctor properties (ID, name, age, phoneNumber, specialization).
  * This class extends the Person class.
@@ -14,10 +14,15 @@ public class Doctor extends Person {
     private String specialization;
     private List<Patient> patients;
 
-    /*
+    /**
      * Constructor for the Doctor class.
      * Initializes the doctor with an ID, name, age, phone number, and specialization.
      * Also initializes an empty list of patients.
+     * @param ID            Unique identifier for the doctor
+     * @param name          Name of the doctor
+     * @param age           Age of the doctor
+     * @param phoneNumber   Phone number of the doctor
+     * @param specialization Specialization of the doctor
      */
     public Doctor(int ID, String name, int age, String phoneNumber, String specialization) {
         super(ID, name, age, phoneNumber);
@@ -25,7 +30,7 @@ public class Doctor extends Person {
         this.patients = new ArrayList<>();
     }
 
-    /*
+    /**
      * Getter for specialization
      * @return specialization of the doctor
      */
@@ -33,7 +38,7 @@ public class Doctor extends Person {
         return specialization;
     }
 
-    /*
+    /**
      * Setter for specialization
      * @param specialization new specialization of the doctor
      */
@@ -41,7 +46,7 @@ public class Doctor extends Person {
         this.specialization = specialization;
     }
 
-    /*
+    /**
      * Method to add a patient to the doctor's list of patients.
      * @param patient the patient to be added
      */
@@ -54,7 +59,7 @@ public class Doctor extends Person {
         }
     }
 
-    /*
+    /**
      * Method to remove a patient from the doctor's list of patients.
      * @param patient the patient to be removed
      */
@@ -62,7 +67,7 @@ public class Doctor extends Person {
         patients.remove(patient);
     }
 
-    /*
+    /**
      * Getter for the list of patients
      * @return list of patients assigned to the doctor
      */
@@ -70,7 +75,7 @@ public class Doctor extends Person {
         return patients;
     }
 
-    /*
+    /**
      * Overridden toString method to provide a string representation of the Doctor object.
      * @return string representation of the Doctor
      */

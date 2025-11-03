@@ -1,4 +1,4 @@
-/*
+/**
  * This class represents a Person with attributes such as ID, name, age, and phone number.
  * It provides constructors, getters, setters, and a toString method for easy representation.
  * 
@@ -12,9 +12,13 @@ public class Person {
     private int age;
     private String phoneNumber;
 
-    /*
+    /**
     * Constructor for the Person class.
     * Initializes the person with an ID, name, age, and phone number.
+    * @param ID          Unique identifier for the person
+    * @param name        Name of the person
+    * @param age         Age of the person
+    * @param phoneNumber Phone number of the person
     */
     public Person(int ID, String name, int age, String phoneNumber) {
         this.ID = ID;
@@ -23,7 +27,7 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
 
-    /*
+    /**
      * Getter for ID
      * @return ID of the person
      */
@@ -31,7 +35,7 @@ public class Person {
         return ID;
     }
 
-    /*
+    /**
      * Getter for name
      * @return name of the person
      */
@@ -39,7 +43,7 @@ public class Person {
         return name;
     }
 
-    /*
+    /**
      * Getter for age
      * @return age of the person
      */
@@ -47,7 +51,7 @@ public class Person {
         return age;
     }
 
-    /*
+    /**
      * Getter for phone number
      * @return phone number of the person
      */
@@ -55,7 +59,7 @@ public class Person {
         return phoneNumber;
     }
 
-    /*
+    /**
      * Setters for name properties
      * @param name        new name of the person
      */
@@ -63,7 +67,7 @@ public class Person {
         this.name = name;
     }
 
-    /*
+    /**
      * Setter for age
      * @param age new age of the person
      */
@@ -75,7 +79,7 @@ public class Person {
         }
     }
 
-    /*
+    /**
      * Setter for phone number
      * @param phoneNumber new phone number of the person
      */
@@ -83,7 +87,7 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
 
-    /*
+    /**
      * Overrides the toString method to provide a string representation of the person.
      * @return string representation of the person
      */

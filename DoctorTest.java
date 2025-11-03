@@ -1,4 +1,4 @@
-/*
+/**
  * Handles Doctor class testing.
  * 
  * Author: Abiodun Magret Oyedele

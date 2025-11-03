@@ -127,7 +127,7 @@ The **Pharmacy System** is a console-based Java application designed to help man
 
 ### 1.4 Class Diagram
 ```
-- class Person {
+class Person {
     - int id
     - String name
     - int age
@@ -144,7 +144,7 @@ The **Pharmacy System** is a console-based Java application designed to help man
     + toString()
 }
 
-- class Doctor {
+class Doctor {
     - String specialization    
     - List Patient patients
     + Doctor(int ID, String name, int age, String phoneNumber, String specialization)
@@ -156,7 +156,7 @@ The **Pharmacy System** is a console-based Java application designed to help man
     + toString()
 }
 
-- class Patient {
+class Patient {
     - int patientID`
     - List Prescription prescriptions`
     + Patient(int ID, String name, int age, String phoneNumber)`
@@ -298,7 +298,7 @@ To ensure that all components of the Pharmacy System work as expected, a set of 
 
 ## 2. DEVELOPMENT DOCUMENTATION
 ### 2.1. Javadocs
-All classes, attributes, and methods are documented using **Javadoc comments**, providing clear descriptions of their purpose and usage.
+All classes, attributes, and methods in the project are thoroughly documented using **Javadoc comments**, providing clear explanations of their purpose, functionality, and expected usage. This documentation makes it easier to understand the code structure and maintain the project. The generated Javadoc files are stored in the doc/ folder, which acts as a centralized reference point. Users can navigate this folder to quickly access information about class responsibilities, method parameters and return values, and any important implementation details. This approach enhances code readability, facilitates onboarding of new team members, and ensures consistent documentation practices across the project.
 Example:
 
 ```
@@ -339,6 +339,7 @@ public class Medication {
 ### 2.2 Source Code Directory Structure
 ```
 abiodun_brandon_sprint1_java/
+    |-- doc/
     |-- Doctor.java
     |-- DoctorTest.java
     |-- Medication.java
